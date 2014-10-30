@@ -81,8 +81,8 @@ alias extglob='noglob ext_glob '  # delay globbing until inside
 export PATH=$HOME/bin:$PATH
 export TIMEFMT="%U user   %MMB memory   %P cpu   %*E total - %J"
 
-samcd=~/GSP/research/samc
-export PYTHONPATH=$HOME/GSP/code/jobmon:$HOME/GSP/research/samc/samcnet
+bayesd=~/GSP/research/bayes
+export PYTHONPATH=$HOME/GSP/code/jobmon:$HOME/GSP/research/bayes/samcnet
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
