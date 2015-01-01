@@ -1,10 +1,50 @@
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+Plugin 'JuliaLang/julia-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+Plugin 'tomasr/molokai'
+"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'lervag/vim-latex'
+Plugin 'scrooloose/syntastic'
+Plugin 'sjl/gundo.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
 set encoding=utf-8
 autocmd!	
 "Remove ALL autocommands for the current group.
-
-call pathogen#infect()
-call pathogen#helptags()
 
 if has('autocmd')
   filetype plugin indent on
@@ -38,10 +78,12 @@ set selectmode=key
 set t_Co=256
 "colorscheme darkburn
 colorscheme molokai
+let g:rehash256 = 1
 
 " Vim indent guides
 "let g:indent_guides_start_level=2
 "let g:indent_guides_start_size=1
+"let g:indent_guides_guide_size=1
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
@@ -202,3 +244,5 @@ nnoremap <enter> za
 vnoremap <enter> zf
 
 noremap <leader>/ <Esc>:syntax sync fromstart<CR>
+
+nnoremap <F5> :GundoToggle<CR>
