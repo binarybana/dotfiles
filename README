@@ -25,6 +25,7 @@ if [[ ! -e $HOME/.homesick ]]; then
   
   # Get a local copy of GSP/ and Dropbox/ if available
   # Install btsync
+  # Open vim: :PluginInstall
   
   #echo "openout_any = a" >> /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 fi
@@ -33,6 +34,7 @@ fi
 ##########################################
 
 sudo dnf install $(cat $HOME/.homesick/repos/dotfiles/pkg-list.yum)
+# sudo pip install flake8 redis msgpack-python
 
 chsh --shell /bin/zsh
 
