@@ -1,7 +1,0 @@
-set guioptions=aiAr " Disable toolbar, menu bar, scroll bars 
-set guifont=DejaVu\ Sans\ Mono\ 11  " use this font 
-set lines=50       " height = 50 lines
-set columns=100        " width = 100 columns
-
-set background=dark
-colorscheme molokai

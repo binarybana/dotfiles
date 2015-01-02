@@ -25,6 +25,9 @@ if [[ ! -e $HOME/.homesick ]]; then
   
   # Get a local copy of GSP/ and Dropbox/ if available
   # Install btsync
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+
   # Open vim: :PluginInstall
   
   #echo "openout_any = a" >> /usr/share/texlive/texmf-dist/web2c/texmf.cnf
