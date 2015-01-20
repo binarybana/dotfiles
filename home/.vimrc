@@ -16,7 +16,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
 "Plugin 'nathanaelkane/vim-indent-guides'
@@ -246,3 +247,10 @@ vnoremap <enter> zf
 noremap <leader>/ <Esc>:syntax sync fromstart<CR>
 
 nnoremap <F5> :GundoToggle<CR>
+
+map <leader>c<space> :TComment<CR>
+map <leader>cb :TCommentBlock<CR>
+
+call tcomment#DefineType('julia',          '# %s'            )
+call tcomment#DefineType('julia_block',    "#=%s=#\n   "      )
+call tcomment#DefineType('julia_inline',   '#= %s =#'         )
