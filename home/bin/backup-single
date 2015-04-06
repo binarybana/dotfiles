@@ -1,15 +1,12 @@
 #!/bin/sh
 
-SRC=/media/bana/Pookie/$1
-DEST=/mnt/knight-backup
-USER=pi
-SERVER=raspberrypi
-DIRNAME=$1
+SRC=/run/media/jason/Pookie/$1
+DEST=/run/media/jason/whale/back-current
 
-rsync -azHP \
+echo "Backing up $SRC to $DEST"
+rsync -azHhP \
   --size-only \
   --stats \
-  $SRC $USER@$SERVER:$DEST/$DIRNAME
+  $SRC $DEST
 
-ssh $USER@$SERVER "touch $DEST/$DIRNAME && \
-    chmod 755 -R $DEST/$DIRNAME"
+echo "Done."

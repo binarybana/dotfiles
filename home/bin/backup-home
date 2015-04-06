@@ -2,18 +2,18 @@
 
 set -o errexit 
 
-SRC=/home/bana
-DEST=/mnt/knight-backup
-USER=pi
-SERVER=raspberrypi
+SRC=/home/jason
+DEST=/run/media/jason/whale/back-current
 DIRNAME=bana-desktop-home
 
-rsync -azhP \
-  --delete \
+echo "Backing up $SRC to $DEST"
+
+rsync -azh \
   --stats \
   $SRC/GSP \
-  $SRC/Dropbox \
-  $USER@$SERVER:$DEST/$DIRNAME/
+  $DEST/$DIRNAME/
 
-ssh $USER@$SERVER "touch $DEST/$DIRNAME && \
-    chmod 755 -R $DEST/$DIRNAME"
+echo "Done"
+
+# Used to be a --delete but I don't have dropbox atm
+# and a $SRC/Dropbox

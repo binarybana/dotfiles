@@ -1,19 +1,17 @@
 #!/bin/sh
 
-SRC=/media/bana/Pookie
-DEST=/mnt/knight-backup
-USER=pi
-SERVER=raspberrypi
+
+SRC=/run/media/jason/Pookie/
+DEST=/run/media/jason/whale/back-current
 DIRNAME=bana-desktop-whale
 
-rsync -rlzHP \
+echo "Backing up $SRC to $DEST"
+rsync -rlzHh \
   --size-only \
   --delete \
   --delete-excluded \
   --exclude-from=$SRC/backup_exclude.txt \
   --stats \
-  $SRC $USER@$SERVER:$DEST/$DIRNAME 
-  
-ssh $USER@$SERVER "touch $DEST/$DIRNAME && \
-    chmod 755 -R $DEST/$DIRNAME"
+  $SRC $DEST/$DIRNAME 
 
+echo "Done."
