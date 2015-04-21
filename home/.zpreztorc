@@ -34,8 +34,12 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
-  'git'
+  'prompt'
+
+if [ "$(uname)" == "Darwin"]; then
+  zstyle ':prezto:load' pmodule "osx"
+fi
+
 
 #
 # Editor

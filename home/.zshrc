@@ -40,8 +40,13 @@ alias ai='sudo apt-get install'
 alias yi='sudo dnf install'
 alias yu='sudo dnf update'
 alias ys='dnf search'
+alias bi='sudo brew install'
+alias bu='sudo brew update'
+alias bs='brew search'
 
-alias vim='gvim -v'
+if [ "$(uname)" != "Darwin" ] then
+  alias vim='gvim -v'
+fi
 alias essh='vim ~/.ssh/config'
 alias ez='vim ~/.zshrc'
 alias sz='. ~/.zshrc'
