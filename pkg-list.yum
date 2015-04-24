@@ -1,6 +1,7 @@
 git 
 dstat 
 curl 
+vim-enhanced
 vim-X11
 mercurial 
 ccsm
@@ -11,15 +12,12 @@ inkscape
 gimp 
 zsh 
 m4 
-ipython 
 numpy 
 scipy 
 python-tables 
 python-networkx 
 python-pip 
-python-pandas 
 Cython 
-rxvt-unicode-256color 
 xclip 
 gcc-c++
 gnome-tweak-tool
@@ -28,7 +26,3 @@ texlive-scheme-medium
 texlive-collection-science
 texlive-collection-mathextra
 texlive-collection-pstricks
-python-ipython
-python-ipython-gui
-python-ipython-notebook
-

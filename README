@@ -1,7 +1,6 @@
 #!/bin/bash -ex
 # inspired from https://gist.github.com/2913223
 
-
 ##########################################
 # Only needed if starting from fresh $HOME
 ##########################################
@@ -9,33 +8,21 @@ if [[ ! -e $HOME/.homesick ]]; then
   # Prerequisites to run this script:
   # SSH key that Github understands so we can checkout our dotfiles repo
   
-  sudo dnf install git curl
   # Install Homeshick
   git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
   printf '\nsource $HOME/.homesick/repos/homeshick/homeshick.sh\n' >> $HOME/.bashrc
   source $HOME/.bashrc
   
   homeshick clone git@github.com:binarybana/dotfiles.git
-  # Answer n when it asks to symlink
-  
-  mv $HOME/.ssh $HOME/ssh
-  homeshick symlink dotfiles
-  cp -a ssh/* $HOME/.homesick/repos/dotfiles/home/.ssh
-  rm -rf $HOME/ssh
-  
-  # Get a local copy of GSP/ and Dropbox/ if available
-  # Install btsync
-
-  # Open vim: :PluginInstall
-  
-  #echo "openout_any = a" >> /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 fi
 ##########################################
 # endif
 ##########################################
 
 sudo dnf install $(cat $HOME/.homesick/repos/dotfiles/pkg-list.yum)
-# sudo pip install flake8 redis msgpack-python
+sudo pip install $(cat $HOME/.homesick/repos/dotfiles/pip-list)
+# Open vim: :PluginInstall
+#echo "openout_any = a" >> /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 
 chsh --shell /bin/zsh
 
@@ -43,6 +30,4 @@ su -c 'yum localinstall -y https://dl.google.com/linux/direct/google-chrome-stab
 
 su -c 'yum localinstall --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
 
-# In fedora install Infinilaty text rendering patches:
-su -c 'yum localinstall -y http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm'
-sudo dnf install -y freetype-infinality fontconfig-infinality gstreamer-plugins-bad-nonfree
+# For Samsung Ultrabook with Logitech MK700: xinput set-prop 13 279 3, 3, 3

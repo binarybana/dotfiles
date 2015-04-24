@@ -1,0 +1,6 @@
+python-pandas 
+ipython
+zmq
+redis
+msgpack-python
+flake8
