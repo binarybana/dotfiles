@@ -44,7 +44,7 @@ alias bi='sudo brew install'
 alias bu='sudo brew update'
 alias bs='brew search'
 
-if [ "$(uname)" != "Darwin" ] then
+if [[ "$OSTYPE" != "Darwin" ]]; then
   alias vim='gvim -v'
 fi
 alias essh='vim ~/.ssh/config'
