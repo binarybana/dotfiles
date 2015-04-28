@@ -1,6 +1,9 @@
-python-pandas 
+pandas 
 ipython
-zmq
+pyzmq
 redis
 msgpack-python
 flake8
+python-snappy
+blosc
+lz4
