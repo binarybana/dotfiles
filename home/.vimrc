@@ -1,35 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'kien/ctrlp.vim'
-"Plugin 'scrooloose/nerdcommenter'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'bling/vim-airline'
-Plugin 'tomasr/molokai'
-"Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'lervag/vim-latex'
-Plugin 'scrooloose/syntastic'
-Plugin 'sjl/gundo.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
+source ~/.vundlerc
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
