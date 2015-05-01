@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-filetype plugin indent on    " required
 source ~/.vundlerc
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -17,13 +16,7 @@ source ~/.vundlerc
 
 
 set encoding=utf-8
-autocmd!	
-"Remove ALL autocommands for the current group.
-
-if has('autocmd')
-  filetype plugin indent on
-endif
-
+filetype plugin indent on
 syntax enable
 
 map Q gq
