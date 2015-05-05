@@ -1,0 +1,21 @@
+#!/bin/sh
+
+ls /sys/block/zram* > /dev/null 2>&1 || exit 0
+
+for i in /sys/block/zram*; do
+	compr=$(< $i/compr_data_size)
+	orig=$(< $i/orig_data_size)
+	comprM=$(echo "scale=2; $compr/1000000" | bc -q)
+	origM=$(echo "scale=2; $orig/1000000" | bc -q)
+	ratio=0
+	if [ $compr -gt 0 ]; then
+		ratio=$(echo "scale=2; $compr*100/$orig" | bc -q)
+	fi
+	echo -e "/dev/${i/*\/}:\t$ratio% (${origM}MB -> ${comprM}MB)"
+done
+
+TOTCOMPR=$(find -L /sys/block -maxdepth 2 -iname compr_data_size -exec cat {} \; | awk 'BEGIN {sum = 0} {sum+=$1} END {print sum}')
+TOTORIG=$(find -L /sys/block -maxdepth 2 -iname orig_data_size -exec cat {} \; | awk 'BEGIN {sum = 0} {sum+=$1} END {print sum}')
+
+echo ""
+echo "Total: $(echo "scale=2; $TOTORIG / 1000000" | bc -q) MB -> $(echo "scale=2; $TOTCOMPR / 1000000" | bc -q) MB"
