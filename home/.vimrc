@@ -142,7 +142,8 @@ highlight NonText ctermfg=grey
 highlight SpecialKey ctermfg=grey
 highlight LineNr ctermfg=grey
 
-:map <F3> :w !detex \| wc -w<CR>
+" :map <F3> :w !detex \| wc -w<CR>
+nnoremap <F3> :set nonumber!<CR>
 
 nnoremap j gj
 nnoremap k gk

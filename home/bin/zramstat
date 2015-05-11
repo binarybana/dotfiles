@@ -19,3 +19,4 @@ TOTORIG=$(find -L /sys/block -maxdepth 2 -iname orig_data_size -exec cat {} \; |
 
 echo ""
 echo "Total: $(echo "scale=2; $TOTORIG / 1000000" | bc -q) MB -> $(echo "scale=2; $TOTCOMPR / 1000000" | bc -q) MB"
+echo "Savings: $(echo "scale=2; ($TOTORIG - $TOTCOMPR)/ 1000000" | bc -q) MB"
