@@ -19,16 +19,16 @@ fi
 # endif
 ##########################################
 
-sudo dnf install $(cat $HOME/.homesick/repos/dotfiles/pkg-list.yum)
+sudo dnf install $(cat $HOME/.homesick/repos/dotfiles/pkg-list.dnf)
 sudo pip install $(cat $HOME/.homesick/repos/dotfiles/pip-list)
 # Open vim: :PluginInstall
 #echo "openout_any = a" >> /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 
 chsh --shell /bin/zsh
 
-su -c 'yum localinstall -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm'
+sudo dnf install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 
-su -c 'yum localinstall --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # Font rendering in fedora from:
 # https://www.happyassassin.net/2014/01/17/fonts-and-font-sizes-in-fedora-on-the-internet-hold-onto-your-hats/
@@ -36,3 +36,11 @@ su -c 'yum localinstall --nogpgcheck -y http://download1.rpmfusion.org/free/fedo
 # For Samsung Ultrabook with Logitech MK700: 
 # xinput set-prop 'Logitech M705' 'Evdev Scrolling Distance' 4, 4, 4
 
+# Small things:
+# Tweak Tool: 
+# - Windows: window action key: alt
+# - Typing: ctrl key position: caps lock as ctrl, kill seq : ctrl alt backspace
+#
+# Settings: Keyboard: shortcuts: custom: ctrl alt t terminal
+#
+# /etc/sysctl.conf: kernel.sysrq = 1

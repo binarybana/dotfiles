@@ -36,3 +36,16 @@ zlib-devel
 snappy-devel
 blosc-devel
 lz4-devel
+Cython
+freetype-devel
+libpng-devel
+jq
+htop
+tar
+wget
+make
+m4
+gmp-devel
+patch
+bzip2
+docker

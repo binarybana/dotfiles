@@ -37,9 +37,10 @@ alias bc='bc -l'
 alias as='apt-cache search'
 alias au='sudo apt-get update && sudo apt-get upgrade'
 alias ai='sudo apt-get install'
-alias yi='sudo dnf install'
-alias yu='sudo dnf update'
-alias ys='dnf search'
+alias di='sudo dnf install'
+alias dii='sudo dnf install -y'
+alias dup='sudo dnf update'
+alias ds='dnf search'
 alias bi='sudo brew install'
 alias bu='sudo brew update'
 alias bs='brew search'
@@ -86,8 +87,6 @@ alias extglob='noglob ext_glob '  # delay globbing until inside
 export PATH=$HOME/bin:$PATH
 export TIMEFMT="%U user   %MMB memory   %P cpu   %*E total - %J"
 
-bayesd=~/GSP/research/bayes
-export PYTHONPATH=$HOME/GSP/code/jobmon:$HOME/GSP/research/bayes/samcnet
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -97,3 +96,6 @@ function bwpdf {
     -sColorConversionStrategy=Gray -dProcessColorModel=/DeviceGray \
     -dCompatibilityLevel=1.4 -dNOPAUSE -dBATCH $1
 }
+
+export CEREBRO_HOME=$HOME/hli/cerebro
+export ADAM_HOME=$CEREBRO_HOME/external/adam
