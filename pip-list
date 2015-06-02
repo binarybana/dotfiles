@@ -13,3 +13,5 @@ jsonschema
 matplotlib
 awscli
 bokeh
+boto
+aws-cli
