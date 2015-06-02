@@ -99,3 +99,9 @@ function bwpdf {
 
 export CEREBRO_HOME=$HOME/hli/cerebro
 export ADAM_HOME=$CEREBRO_HOME/external/adam
+
+function s3du(){
+  bucket=`cut -d/ -f3 <<< $1`
+  prefix=`awk -F/ '{for (i=4; i<NF; i++) printf $i"/"; print $NF}' <<< $1`
+  aws s3api list-objects --bucket $bucket --prefix=$prefix --output json --query '[sum(Contents[].Size), length(Contents[])]' | jq '. |{ size:.[0],num_objects: .[1]}'
+}
