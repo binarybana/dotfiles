@@ -105,3 +105,10 @@ function s3du(){
   prefix=`awk -F/ '{for (i=4; i<NF; i++) printf $i"/"; print $NF}' <<< $1`
   aws s3api list-objects --bucket $bucket --prefix=$prefix --output json --query '[sum(Contents[].Size), length(Contents[])]' | jq '. |{ size:.[0],num_objects: .[1]}'
 }
+
+export SPARK_HOME=$HOME/src/spark
+
+setopt interactivecomments
+
+bindkey -e
+export PYTHONPATH=$PYTHONPATH:$HOME/src/spark-1.4.0-bin-hadoop2.6/python

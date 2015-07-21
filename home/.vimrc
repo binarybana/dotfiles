@@ -42,11 +42,6 @@ set background=dark   " adapt colors for background
 set selectmode=key
 
 " Begin Jason Knight copying from stevelosh.com 'coming home to vim'
-set t_Co=256
-"colorscheme darkburn
-colorscheme molokai
-let g:rehash256 = 1
-
 " Vim indent guides
 "let g:indent_guides_start_level=2
 "let g:indent_guides_start_size=1
@@ -221,3 +216,19 @@ map <leader>cb :TCommentBlock<CR>
 call tcomment#DefineType('julia',          '# %s'            )
 call tcomment#DefineType('julia_block',    "#=%s=#\n   "      )
 call tcomment#DefineType('julia_inline',   '#= %s =#'         )
+
+" let g:syntastic_quiet_messages = {
+"     \ "!level":  "warnings",
+"     \ "type":    "style",
+"     \ "regex":   'length' }
+
+noremap <leader>[ :SyntasticToggleMode<CR>
+noremap <leader>] :SyntasticCheck<CR>
+
+let g:syntastic_mode_map = { "passive_filetypes": ["scala"] }
+
+set t_Co=256
+"colorscheme darkburn
+let g:rehash256 = 1
+colorscheme molokai
+
