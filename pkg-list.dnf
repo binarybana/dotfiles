@@ -48,3 +48,4 @@ docker
 ctags
 scala
 sbt
+python-zmq
