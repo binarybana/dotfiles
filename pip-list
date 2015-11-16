@@ -1,6 +1,5 @@
-pandas 
-ipython
-pyzmq
+pandas
+ipython[notebook]
 redis
 msgpack-python
 flake8
@@ -14,4 +13,5 @@ matplotlib
 awscli
 bokeh
 boto
-aws-cli
+seaborn
+pytest
