@@ -101,3 +101,10 @@ fi
 skip_global_compinit=1
 
 TIMEFMT="%U user   %MMB memory   %P cpu   %*E total - %J"
+
+source ~/.awsenv
+export SPARK_HOME=$HOME/src/spark
+export PYTHONPATH=$SPARK_HOME/python
+export PATH=$PATH:$SPARK_HOME/bin
+export AWS_DEFAULT_PROFILE=sdrad-bix
+export BIXHOME="s3://hli-bix-us-west-2/jknight"
