@@ -4,16 +4,17 @@ input=$1
 strinput=${input%.tex}
 opts='--enable-write18'
 ext=tex
+ENGINE=lualatex
 export TMPDIR=/tmp
 
-pdflatex ${opts} -draftmode -interaction nonstopmode -output-directory /tmp $input > /dev/null 2>&1
+$ENGINE ${opts} -draftmode -interaction nonstopmode -output-directory /tmp $input > /dev/null 2>&1
 bibtex /tmp/${strinput}.aux > /dev/null 2>&1
 cp /tmp/${strinput}.bbl .
-pdflatex ${opts} -draftmode -interaction nonstopmode -output-directory /tmp $input > /dev/null 2>&1
+$ENGINE ${opts} -draftmode -interaction nonstopmode -output-directory /tmp $input > /dev/null 2>&1
 if [ "$2" == "errors" ]; then
-		pdflatex ${opts} -interaction nonstopmode -output-directory /tmp $input
+		$ENGINE ${opts} -interaction nonstopmode -output-directory /tmp $input
 else
-		pdflatex ${opts} -interaction nonstopmode -output-directory /tmp $input | grep -i error -C 5
+		$ENGINE ${opts} -interaction nonstopmode -output-directory /tmp $input | grep -i error -C 5
 fi
 rm ${strinput}.bbl
 

@@ -112,3 +112,13 @@ setopt interactivecomments
 
 bindkey -e
 export PYTHONPATH=$PYTHONPATH:$HOME/src/spark-1.4.0-bin-hadoop2.6/python
+
+export GOPATH=$HOME/src/gocode
+export GOROOT=$HOME/src/go
+export GOBIN=$HOME/src/go/bin
+export PATH=$PATH:$GOBIN
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias vim=nvim
+alias vi=nvim

@@ -19,17 +19,16 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'scrooloose/nerdcommenter'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
-"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'lervag/vim-latex'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
 
 
 " All of your Plugins must be added before the following line

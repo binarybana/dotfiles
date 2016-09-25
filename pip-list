@@ -1,6 +1,5 @@
 pandas 
 ipython
-pyzmq
 redis
 msgpack-python
 flake8
@@ -14,4 +13,3 @@ matplotlib
 awscli
 bokeh
 boto
-aws-cli
