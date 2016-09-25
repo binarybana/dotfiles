@@ -161,13 +161,19 @@ inoremap ,. <ESC>
 vnoremap ,. <ESC>  
 " nnoremap <leader>w <C-w>v<C-w>l
 
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
-
 nnoremap <leader>h gT
 nnoremap <leader>l gt
+
+" window
+nmap <leader>swh  :topleft  vnew<CR>
+nmap <leader>swl :botright vnew<CR>
+nmap <leader>swj    :topleft  new<CR>
+nmap <leader>swk  :botright new<CR>
+" buffer
+nmap <leader>sh   :leftabove  vnew<CR>
+nmap <leader>sl  :rightbelow vnew<CR>
+nmap <leader>sj     :leftabove  new<CR>
+nmap <leader>sk   :rightbelow new<CR>
 
 " More of Jason's stuff below VVVV
 

@@ -1,5 +1,7 @@
 pandas 
 ipython
+pandas
+jupyter[notebook]
 redis
 msgpack-python
 flake8
@@ -13,3 +15,5 @@ matplotlib
 awscli
 bokeh
 boto
+seaborn
+pytest

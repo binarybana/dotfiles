@@ -26,7 +26,6 @@ google-droid-sans-mono-fonts
 google-droid-serif-fonts
 google-droid-sans-fonts
 google-croscore-arimo-fonts
-solaar
 linux-libertine-fonts
 zlib-devel
 snappy-devel
@@ -48,3 +47,4 @@ docker
 ctags
 scala
 sbt
+python-zmq
