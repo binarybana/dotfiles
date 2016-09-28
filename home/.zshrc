@@ -45,7 +45,7 @@ alias bi='sudo brew install'
 alias bu='sudo brew update'
 alias bs='brew search'
 
-if [[ "$OSTYPE" != "Darwin" || -z /bin/gvim ]]; then
+if [[ -z /bin/gvim ]]; then
   alias vim='gvim -v'
 fi
 alias essh='vim ~/.ssh/config'
@@ -115,3 +115,11 @@ bindkey -e
 
 alias vim=nvim
 alias vi=nvim
+export HOMEBREW_GITHUB_API_TOKEN="eeb6b62887ffdea9cd27c546af3c5a694cf55c0f"
+alias k=kubectl
+alias kg="kubectl get"
+alias kgp="kubectl get pods"
+alias kgn="kubectl get nodes"
+alias kgj="kubectl get jobs"
+alias -g ks="--namespace=kube-system"
+alias vim=nvim
