@@ -7,20 +7,20 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plug 'tpope/vim-fugitive'
 " Plug 'kien/ctrlp.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
 Plug 'tomasr/molokai'
-" Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-" Plug 'lervag/vim-latex'
+" Plug 'godlygeek/tabular'
 " Plug 'scrooloose/syntastic'
+" Plug 'lervag/vim-latex'
 " Plug 'sjl/gundo.vim'
 " Plug 'derekwyatt/vim-scala'
+" Plug 'JuliaLang/julia-vim'
 Plug 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go'
 Plug 'mileszs/ack.vim'
-" Plug 'JuliaLang/julia-vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 call plug#end()
 
 map <C-j> 5j
@@ -89,7 +89,7 @@ map <leader>te :tabe <C-R>=expand("%:h")<cr>/
 map <leader>tn :tabnew <C-R>=expand("%:h")<cr>/
 map <leader>tt :tabnew <cr>
 
-map <C-p> :FZF<cr>
+map <c-p> :FZF -m --bind=ctrl-z:toggle <CR>
 
 let g:rehash256 = 1
 colorscheme molokai
@@ -115,3 +115,22 @@ if executable('rg')
   let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 nnoremap <leader>g :Ack<space>
+
+nnoremap <enter> za
+vnoremap <enter> zf
+
+set scrolloff=3
+
+" Repaint syntax highlighting
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
+
+" Smartcase search
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
