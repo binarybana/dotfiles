@@ -1,3 +1,5 @@
+runtime! plugin/python_setup.vim
+
 if !isdirectory(expand("~/.config/nvim/autoload"))
   !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
@@ -12,6 +14,7 @@ Plug 'bling/vim-airline'
 Plug 'tomasr/molokai'
 Plug 'plasticboy/vim-markdown'
 " Plug 'godlygeek/tabular'
+Plug 'neomake/neomake'
 " Plug 'scrooloose/syntastic'
 " Plug 'lervag/vim-latex'
 " Plug 'sjl/gundo.vim'
@@ -20,7 +23,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim'
 Plug 'sebastianmarkow/deoplete-rust'
+" Plug 'klen/python-mode'
 " Plug 'fatih/vim-go'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 " For macos homebrew fzf:
@@ -47,8 +53,9 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set scrolloff=3
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=100
 au FileType python set foldmethod=indent foldnestmax=2 foldignore=
+autocmd! BufWritePost * Neomake
 nmap <leader>i :set list!<CR>
 set listchars=eol:¬,tab:▸\ 
 nnoremap <F3> :set nonumber!<CR>
@@ -66,7 +73,7 @@ inoremap jb <ESC>
 nnoremap <C-n> <C-w>h
 nnoremap <C-s> <C-w>l
 nnoremap <C-g> <C-w>k
-nnoremap <C-m> <C-w>j
+nmap <C-x> <C-w>j
 
 " nnoremap <leader>h <C-w>h
 " nnoremap <leader>j <C-w>j
@@ -94,6 +101,7 @@ map <leader>tn :tabnew <C-R>=expand("%:h")<cr>/
 map <leader>tt :tabnew <cr>
 
 map <c-p> :FZF -m --bind=ctrl-z:toggle <CR>
+let g:fzf_buffers_jump = 1
 
 let g:rehash256 = 1
 colorscheme molokai
@@ -120,8 +128,8 @@ if executable('rg')
 endif
 nnoremap <leader>g :Ack<space>
 
-nnoremap <enter> za
-vnoremap <enter> zf
+" nnoremap <enter> za
+" vnoremap <enter> zf
 
 set scrolloff=3
 
@@ -142,3 +150,8 @@ set hlsearch
 let g:deoplete#sources#rust#racer_binary='/home/jason/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/home/jason/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:deoplete#enable_at_startup = 1
+" autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+au FileType python setlocal formatprg=autopep8\ -
+let g:neomake_python_enabled_makers = ['pep8', 'flake8']
+let g:deoplete#enable_at_startup = 1
+let g:python3_host_prog = '/Users/jasonkni/src/venvs/py3/bin/python'
