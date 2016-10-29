@@ -111,7 +111,7 @@ bindkey -e
 # export GOROOT=$HOME/src/go
 # export GOBIN=$HOME/src/go/bin
 # export PATH=$PATH:$GOBIN
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias vim=nvim
 alias vi=nvim

@@ -17,10 +17,14 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'sjl/gundo.vim'
 " Plug 'derekwyatt/vim-scala'
 " Plug 'JuliaLang/julia-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
 " Plug 'fatih/vim-go'
 Plug 'mileszs/ack.vim'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+" For macos homebrew fzf:
+" Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 call plug#end()
 
 map <C-j> 5j
@@ -134,3 +138,7 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
+
+let g:deoplete#sources#rust#racer_binary='/home/jason/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/jason/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#enable_at_startup = 1
