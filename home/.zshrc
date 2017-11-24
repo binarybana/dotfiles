@@ -123,3 +123,5 @@ alias kgn="kubectl get nodes"
 alias kgj="kubectl get jobs"
 alias -g ks="--namespace=kube-system"
 alias vim=nvim
+
+alias venv='source $HOME/.local/venv3/bin/activate'
