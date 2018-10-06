@@ -16,19 +16,34 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'JuliaLang/julia-vim'
+
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'JuliaLang/julia-vim'
+" Plugin 'godlygeek/tabular'
+" Plugin 'derekwyatt/vim-scala'
+" Plugin 'fatih/vim-go'
+
+Plug 'w0rp/ale'
+Plug 'airblade/vim-rooter'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" Completion plugins
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'lervag/vim-latex'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'fatih/vim-go'
+
 
 
 " All of your Plugins must be added before the following line

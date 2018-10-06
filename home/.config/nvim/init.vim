@@ -5,32 +5,49 @@ if !isdirectory(expand("~/.config/nvim/autoload"))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'w0rp/ale'
+Plug 'airblade/vim-rooter'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
+" Completion plugins
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+
+Plug 'airblade/vim-rooter'
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fugitive'
 " Plug 'kien/ctrlp.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline'
 Plug 'tomasr/molokai'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 " Plug 'godlygeek/tabular'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 " Plug 'scrooloose/syntastic'
 " Plug 'lervag/vim-latex'
 " Plug 'sjl/gundo.vim'
 " Plug 'derekwyatt/vim-scala'
 " Plug 'JuliaLang/julia-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'rust-lang/rust.vim'
-Plug 'sebastianmarkow/deoplete-rust'
+" Plug 'sebastianmarkow/deoplete-rust'
 " Plug 'klen/python-mode'
 " Plug 'fatih/vim-go'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 " For macos homebrew fzf:
 " Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+" Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin'}
+" Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
+" Plug 'roxma/nvim-completion-manager'
 call plug#end()
 
 map <C-j> 5j
@@ -55,7 +72,7 @@ set expandtab
 set scrolloff=3
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=100
 au FileType python set foldmethod=indent foldnestmax=2 foldignore=
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 nmap <leader>i :set list!<CR>
 set listchars=eol:¬,tab:▸\ 
 nnoremap <F3> :set nonumber!<CR>
@@ -147,11 +164,68 @@ set incsearch
 set showmatch
 set hlsearch
 
-let g:deoplete#sources#rust#racer_binary='/home/jason/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/jason/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources#rust#racer_binary='/home/jason/.cargo/bin/racer'
+" let g:deoplete#sources#rust#rust_source_path='/home/jason/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" let g:deoplete#enable_at_startup = 1
 " autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
-au FileType python setlocal formatprg=autopep8\ -
-let g:neomake_python_enabled_makers = ['pep8', 'flake8']
-let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog = '/Users/jasonkni/src/venvs/py3/bin/python'
+" au FileType python setlocal formatprg=autopep8\ -
+" let g:neomake_python_enabled_makers = ['pep8', 'flake8']
+" let g:deoplete#enable_at_startup = 1
+" let g:python3_host_prog = '/Users/jasonkni/src/venvs/py3/bin/python'
+
+" let g:autofmt_autosave = 1
+
+" RLS setup {{{
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_autoStart = 0
+nnoremap <leader>cs :LanguageClientStart<CR>
+nnoremap <leader>cp :LanguageClientStop<CR>
+" if you want it to turn on automatically
+" let g:LanguageClient_autoStart = 1
+
+let g:LanguageClient_settingsPath = "/home/jason/.vim/settings.json"
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['pyls'],
+    \ }
+
+noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
+noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
+noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
+
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" Linter
+let g:ale_sign_column_always = 0
+" only lint on save
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 0
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_all_targets = 1
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-s> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+
+let g:rustfmt_command = "rustfmt +nightly"
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+
+" Completion
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+" tab to select
+" and don't hijack my enter key
+" inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
+inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+
+" Follow Rust code style rules
+au Filetype rust set colorcolumn=100
+autocmd BufRead *.md set filetype=markdown

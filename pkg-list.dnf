@@ -2,7 +2,6 @@ git
 dstat 
 curl 
 tmux 
-gcc-gfortran
 openssh-server 
 inkscape 
 gimp 
@@ -30,9 +29,13 @@ htop
 tar
 wget
 make
+cmake
 gmp-devel
 patch
 bzip2
 docker
 ctags
 python-zmq
+neovim
+hub
+find-fd
