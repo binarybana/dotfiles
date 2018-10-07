@@ -111,8 +111,8 @@ map <leader>cb :TCommentBlock<CR>
 
 nmap <Space> i_<Esc>r
 map <leader>e :e <C-R>=expand("%:h")<cr>/
-map <leader>w :w <C-R>=expand("%:h")<cr>/
-" map <leader>sa :sav <C-R>=expand("%:h")<cr>/
+" map <leader>w :w <C-R>=expand("%:h")<cr>/
+map <leader>sa :sav <C-R>=expand("%:h")<cr>/
 map <leader>te :tabe <C-R>=expand("%:h")<cr>/
 map <leader>tn :tabnew <C-R>=expand("%:h")<cr>/
 map <leader>tt :tabnew <cr>
@@ -164,9 +164,6 @@ set incsearch
 set showmatch
 set hlsearch
 
-" let g:deoplete#sources#rust#racer_binary='/home/jason/.cargo/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path='/home/jason/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-" let g:deoplete#enable_at_startup = 1
 " autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
 " au FileType python setlocal formatprg=autopep8\ -
 " let g:neomake_python_enabled_makers = ['pep8', 'flake8']
@@ -174,6 +171,9 @@ set hlsearch
 " let g:python3_host_prog = '/Users/jasonkni/src/venvs/py3/bin/python'
 
 " let g:autofmt_autosave = 1
+
+" Quick-save
+nmap <leader>w :w<CR>
 
 " RLS setup {{{
 " Required for operations modifying multiple buffers like rename.
