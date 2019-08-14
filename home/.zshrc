@@ -125,17 +125,11 @@ alias vim=nvim
 
 alias venv='source $HOME/.local/venv3/bin/activate'
 export RUSTFLAGS="-C target-cpu=native" 
-# export RUSTC_WRAPPER=/home/jason/.cargo/bin/sccache
-export PATH=$PATH:/home/jason/src/FlameGraph
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jason/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/jason/tmp/google-cloud-sdk/path.zsh.inc' ]; then source '/home/jason/tmp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/jason/tmp/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/jason/tmp/google-cloud-sdk/completion.zsh.inc'; fi
-
-export PATH=$PATH:/usr/local/go/bin
-export GOOGLE_APPLICATION_CREDENTIALS=$HOME/src/attic-fan-control-pi/data-fetcher.json
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:/Users/jason/programs/google-cloud-sdk/bin
+# export GOOGLE_APPLICATION_CREDENTIALS=$HOME/src/attic-fan-control-pi/data-fetcher.json
 
 alias git=hub
+
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi

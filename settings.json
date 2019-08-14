@@ -1,0 +1,162 @@
+{
+  "window.zoomLevel": 1,
+  // Pretty
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  // Vim
+  "vim.leader": ",",
+  "vim.hlsearch": true,
+  "vim.surround": true,
+  "vim.sneak": true,
+  "vim.camelCaseMotion.enable": true,
+  // "vim.commentary": true,
+  //"vim.cursorStylePerMode.normal": "underline",
+  "vim.useSystemClipboard": true,
+  // "vim.easymotion": true,
+  // "vim.easymotionMarkerBackgroundColor": "red",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<tab>"
+      ],
+      "after": [
+        "%"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "<space>"
+      ],
+      "after": [
+        "g",
+        "c",
+        "c",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "b"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "<space>"
+      ],
+      "after": [
+        "g",
+        "c",
+        "c",
+        "<escape>"
+      ]
+    }
+  ],
+  "files.watcherExclude": {
+    "**/target": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+  }
+}
