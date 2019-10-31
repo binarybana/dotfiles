@@ -14,6 +14,7 @@ homeshick clone git@github.com:binarybana/dotfiles.git
 ```
 homeshick cd dotfiles
 brew bundle
+cp settings.json "~/Library/Application Support/Code/User/"
 ```
 
 ## Ubuntu
@@ -34,8 +35,8 @@ sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmf
 # All
 
 - Open vim: `:PluginInstall` Or `PlugInstall` for neovim apparently.
-- `chsh --shell /bin/zsh`
-
 ```
+chsh --shell /bin/zsh`
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl -fLSs https://circle.ci/cli | DESTDIR=$HOME/bin bash
 ```
