@@ -219,10 +219,6 @@ nnoremap <F5> :GundoToggle<CR>
 map <leader>c<space> :TComment<CR>
 map <leader>cb :TCommentBlock<CR>
 
-call tcomment#DefineType('julia',          '# %s'            )
-call tcomment#DefineType('julia_block',    "#=%s=#\n   "      )
-call tcomment#DefineType('julia_inline',   '#= %s =#'         )
-
 " let g:syntastic_quiet_messages = {
 "     \ "!level":  "warnings",
 "     \ "type":    "style",

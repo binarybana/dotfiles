@@ -23,17 +23,17 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'fatih/vim-go'
 
-Plug 'w0rp/ale'
-Plug 'airblade/vim-rooter'
-Plug 'autozimu/LanguageClient-neovim', {
+Plugin 'w0rp/ale'
+Plugin 'airblade/vim-rooter'
+Plugin 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 
 " Completion plugins
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-tmux'
+Plugin 'ncm2/ncm2-path'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
