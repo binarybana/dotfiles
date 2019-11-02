@@ -109,5 +109,3 @@ PATH=$PATH:$HOME/.cargo/bin
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*' --glob '!*.pyc'"
-export PATH=/home/jason/miniconda3/bin:/home/jason/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/jason/bin:/usr/lib64/qt-3.3/bin:/home/jason/.cargo/bin
-export RUST_SRC_PATH=/home/jason/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/

@@ -133,3 +133,6 @@ export PATH=$PATH:/Users/jason/programs/google-cloud-sdk/bin
 alias git=hub
 
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+

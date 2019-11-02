@@ -6,6 +6,7 @@ brew "tmux"
 brew "webp"
 brew "node"
 brew "hub"
+brew "htop"
 
 cask "visual-studio-code"
 cask "google-chrome"
