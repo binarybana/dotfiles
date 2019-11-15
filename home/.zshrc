@@ -124,7 +124,7 @@ alias -g ks="--namespace=kube-system"
 alias vim=nvim
 
 alias venv='source $HOME/.local/venv3/bin/activate'
-export RUSTFLAGS="-C target-cpu=native" 
+export RUSTFLAGS="-C target-cpu=native -C link-arg=-fuse-ld=lld"
 
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/Users/jason/programs/google-cloud-sdk/bin
@@ -135,4 +135,12 @@ alias git=hub
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+
+if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
+
+export TVM_HOME=$HOME/src/incubator-tvm
+export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:${PYTHONPATH}
 
