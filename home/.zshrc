@@ -124,7 +124,8 @@ alias -g ks="--namespace=kube-system"
 alias vim=nvim
 
 alias venv='source $HOME/.local/venv3/bin/activate'
-export RUSTFLAGS="-C target-cpu=native -C link-arg=-fuse-ld=lld"
+# export RUSTFLAGS="-C target-cpu=native -C link-arg=-fuse-ld=lld"
+export RUSTFLAGS="-C target-cpu=native"
 
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/Users/jason/programs/google-cloud-sdk/bin

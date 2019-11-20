@@ -1,31 +1,15 @@
 git install
+htop install
 dstat install
 curl install
-vim-gnome install
-mercurial install
-nautilus-dropbox install
-indicator-multiload install
-compizconfig-settings-manager install
+wget install
+neovim install
 tmux install
 build-essential install
-gfortran install
 openssh-server install
-inkscape install
 gimp install
 zsh install
 m4 install
-#
-# Python Stuff
-#
-ipython install
-python-numpy install
-python-scipy install
-python-tables install
-python-networkx install
-python-pip install
-python-pandas install
-cython install
-#
-#
-rxvt-unicode-256color install
-xclip install
+lld install
+
+# inkscape install
