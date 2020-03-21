@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   // Pretty
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -16,6 +16,15 @@
   // "vim.easymotion": true,
   // "vim.easymotionMarkerBackgroundColor": "red",
   "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<C-t>",
+      ],
+      "after": [
+        "F8"
+      ],
+      "commands": []
+    },
     {
       "before": [
         "<leader>",

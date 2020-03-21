@@ -13,6 +13,7 @@ brew "cfssl" # For standalone GCP Kubeconfig
 brew "cmake"
 brew "llvm"
 brew "wget"
+brew "starship"
 
 cask "visual-studio-code"
 cask "google-chrome"

@@ -145,3 +145,4 @@ fi
 export TVM_HOME=$HOME/src/incubator-tvm
 export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:${PYTHONPATH}
 
+eval "$(starship init zsh)"
