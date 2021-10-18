@@ -15,21 +15,15 @@ zstyle ':completion:*' accept-exact-dirs 'yes'
 
 autoload -Uz promptinit
 promptinit
-prompt steeef
+# prompt steeef
 
 bindkey -v
 
 bindkey '\e.' insert-last-word
-alias la='ls -al'
-alias l='ls'
-alias ll='ls -lh'
-alias lll=longlist
-alias waf='./waf'
 
-alias oa='la'
-alias o='l'
-alias oo='ll'
-alias ooo='lll'
+alias oa='exa -a --group-directories-first'
+alias o='exa --group-directories-first'
+alias oo='exa -l --group-directories-first'
 
 alias -g L='--color=always | less -r'
 
@@ -85,7 +79,7 @@ function ext_glob {
 alias extglob='noglob ext_glob '  # delay globbing until inside
 
 export PATH=$HOME/bin:$PATH
-export TIMEFMT="%U user   %MMB memory   %P cpu   %*E total - %J"
+export TIMEFMT="%U user   %M KB memory   %P cpu   %*E total - %J"
 
 
 bindkey '^[[A' history-substring-search-up
@@ -121,11 +115,13 @@ alias kgp="kubectl get pods"
 alias kgn="kubectl get nodes"
 alias kgj="kubectl get jobs"
 alias -g ks="--namespace=kube-system"
+alias -g an="--all-namespaces"
+alias -g ac="--all-containers"
 alias vim=nvim
 
 alias venv='source $HOME/.local/venv3/bin/activate'
 # export RUSTFLAGS="-C target-cpu=native -C link-arg=-fuse-ld=lld"
-export RUSTFLAGS="-C target-cpu=native"
+# export RUSTFLAGS="-C target-cpu=native"
 
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/Users/jason/programs/google-cloud-sdk/bin
@@ -135,14 +131,36 @@ alias git=hub
 
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
-export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+# export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+# export RUSTC_WRAPPER=$HOME/bin/sccache
 
 if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-export TVM_HOME=$HOME/src/incubator-tvm
+export TVM_HOME=$HOME/src/tvm
 export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:${PYTHONPATH}
 
 eval "$(starship init zsh)"
+alias watch='watch '
+
+# Wasmer
+export WASMER_DIR="/Users/jason/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+# export PATH="$WASMTIME_HOME/bin:$PATH:/Users/jason/Library/Python/3.7/bin"
+# export VIRTUALENVWRAPPER_PYTHON=`which python3`
+# export WORKON_HOME=~/envs
+# source /usr/local/bin/virtualenvwrapper.sh
+
+# export OCTO_HOME="$HOME/src/octomizer/libs/python"
+# export PYTHONPATH="$PYTHONPATH:$OCTO_HOME/octomizer"
+# export PYTHONPATH="$PYTHONPATH:$OCTO_HOME/reef"
+# export PYTHONPATH="$PYTHONPATH:$OCTO_HOME/octomizer-runtime"
+# export PYTHONPATH="$PYTHONPATH:$OCTO_HOME/octotypes"
+# export PYTHONPATH="$PYTHONPATH:$OCTO_HOME/blobber-sidecar/blobber"
+# export PATH="/Users/jason/Library/Python/3.9/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"

@@ -109,3 +109,4 @@ PATH=$PATH:$HOME/.cargo/bin
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*' --glob '!*.pyc'"
+source "$HOME/.cargo/env"
