@@ -1,2 +1,28 @@
+scan_timeout = 1
+format = '$username$hostname$directory$git_branch$git_state$git_status$package$dotnet$golang$java$nodejs$python$ruby$rust$nix_shell$conda$memory_usage$aws$env_var$kubernetes$cmd_duration$line_break$jobs$battery$time$character'
+
+[conda]
+disabled = false
+
 [kubernetes]
+symbol = '⛵ '
+style = 'dim green'
 disabled = true
+
+[git_state]
+disabled = false
+
+[git_status]
+disabled = true
+
+[git_branch]
+disabled = false
+
+[python]
+disabled = false
+
+[aws]
+disabled = true
+
+[rust]
+disabled = false

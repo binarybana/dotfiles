@@ -1,4 +1,3 @@
-brew "zsh"
 brew "neovim"
 brew "python"
 brew "kubectl"
@@ -14,6 +13,7 @@ brew "cmake"
 brew "llvm"
 brew "wget"
 brew "starship"
+brew "fish"
 
 cask "visual-studio-code"
 cask "google-chrome"

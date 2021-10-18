@@ -36,9 +36,8 @@ sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmf
 
 - Open vim: `:PluginInstall` Or `PlugInstall` for neovim apparently.
 ```
-chsh --shell /bin/zsh
+chsh --shell /bin/fish
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-curl -fLSs https://circle.ci/cli | DESTDIR=$HOME/bin bash
 cargo install cross cargo-edit cargo-watch just
 curl -fsSL https://starship.rs/install.sh | bash
 ```
