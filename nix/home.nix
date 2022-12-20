@@ -1,34 +1,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
+  programs.home-manager.enable = true;
+  
   home.username = "jason";
   home.homeDirectory = "/home/jason";
-
   nixpkgs.config.allowUnfree = true;
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-
   home.enableNixpkgsReleaseCheck = true;
 
   home.packages = [
     pkgs.tmux
-    pkgs.neovim
     pkgs.bat
     pkgs.fd
     pkgs.exa
@@ -46,7 +30,7 @@
     pkgs.firefox
     pkgs.gnome.gnome-tweaks
     pkgs.hub
-    #pkgs.bpftools
+    # pkgs.bpftools
     pkgs.file
     pkgs.discord
     pkgs.slack
@@ -54,22 +38,12 @@
     pkgs.xclip
   ];
 
-  programs.bash = {
-    shellOptions = [];
-    historyControl = [ "ignoredups" "ignorespace" ];
-    initExtra = builtins.readFile ./bashrc;
-
-    shellAliases = {
-      ga = "git add";
-      gc = "git commit";
-      gco = "git checkout";
-      gcp = "git cherry-pick";
-      gdiff = "git diff";
-      gl = "git prettylog";
-      gp = "git push";
-      gs = "git status";
-      gt = "git tag";
-    };
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+    ];
+    extraConfig = (builtins.readFile ../home/.config/nvim/init.nim);
   };
 
   programs.fish = {
@@ -78,23 +52,6 @@
       (builtins.readFile ../home/.config/fish/config.fish)
       "set -g SHELL ${pkgs.fish}/bin/fish"
     ]);
-
-    shellAliases = {
-      ga = "git add";
-      gc = "git commit";
-      gco = "git checkout";
-      gcp = "git cherry-pick";
-      gdiff = "git diff";
-      gl = "git prettylog";
-      gp = "git push";
-      gs = "git status";
-      gt = "git tag";
-
-      # Two decades of using a Mac has made this such a strong memory
-      # that I'm just going to keep it consistent.
-      pbcopy = "xclip";
-      pbpaste = "xclip -o";
-    };
   };
 
   programs.tmux = {
@@ -106,18 +63,8 @@
 
   programs.alacritty = {
     enable = true;
-
     settings = {
       env.TERM = "xterm-256color";
-
-      key_bindings = [
-        { key = "K"; mods = "Command"; chars = "ClearHistory"; }
-        { key = "V"; mods = "Command"; action = "Paste"; }
-        { key = "C"; mods = "Command"; action = "Copy"; }
-        { key = "Key0"; mods = "Command"; action = "ResetFontSize"; }
-        { key = "Equals"; mods = "Command"; action = "IncreaseFontSize"; }
-        { key = "Subtract"; mods = "Command"; action = "DecreaseFontSize"; }
-      ];
     };
   };
 
@@ -147,4 +94,13 @@
     };
   };
 
+  # This value determines the Home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
+  #
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "22.05";
 }

@@ -7,7 +7,6 @@
 
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
-      # We want home-manager to use the same set of nixpkgs as our system.
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -16,13 +15,12 @@
     nixosConfigurations.alderwhale = nixpkgs.lib.nixosSystem {
       # inherit nixpkgs home-manager;
       system = "x86_64-linux";
-      user = "jason";
       modules = [
       	./configuration.nix
 	home-manager.nixosModules.home-manager {
 	  home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
-	  home-manager.users.${user} = import home.nix;
+	  home-manager.users.jason = import ./home.nix;
         }
       ];
     };

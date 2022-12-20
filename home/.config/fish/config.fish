@@ -12,6 +12,7 @@ alias bc='bc -l'
 
 alias vim=nvim
 alias vi=nvim
+set -gx EDITOR nvim
 
 alias k=kubectl
 alias kg="kubectl get"
@@ -24,6 +25,7 @@ alias ac="--all-containers"
 
 set _git_log_brief_format '%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
 set _git_log_brief_format '%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
+
 
 alias git=hub
 abbr -a g "git"
@@ -46,18 +48,20 @@ abbr -a gwd "git diff --no-ext-diff"
 abbr -a gws "git status --short"
 abbr -a gwS "git status"
 
-####### HOMESHICK ########
-source $HOME/.homesick/repos/homeshick/homeshick.fish
+function flakify
+  if not test -e flake.nix
+    nix flake new -t github:nix-community/nix-direnv .
+    direnv allow
+  else if not test -e .envrc
+    echo "use flake" > .envrc
+    direnv allow
+  end
+  $EDITOR flake.nix
+end
 
 ####### PATH SETUP ########
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 set -x TVM_HOME $HOME/src/tvm
 set -x PYTHONPATH $TVM_HOME/python $TVM_HOME/topi/python $TVM_HOME/nnvm/python $PYTHONPATH
-fish_add_path /opt/homebrew/bin
 fish_add_path ~/.cargo/bin
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
+direnv hook fish | source

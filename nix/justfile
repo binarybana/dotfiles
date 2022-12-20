@@ -1,0 +1,7 @@
+NIXNAME := "alderwhale"
+
+test:
+	sudo nixos-rebuild test --flake ".#{{NIXNAME}}"
+
+switch:
+	sudo nixos-rebuild switch --flake ".#{{NIXNAME}}"
