@@ -19,11 +19,10 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  home.stateVersion = "22.05";
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.direnv.nix-direnv.enableFlakes = true;
 
   home.enableNixpkgsReleaseCheck = true;
 
@@ -47,11 +46,12 @@
     pkgs.firefox
     pkgs.gnome.gnome-tweaks
     pkgs.hub
-    pkgs.bpftools
+    #pkgs.bpftools
     pkgs.file
     pkgs.discord
     pkgs.slack
     pkgs.nixpkgs-fmt
+    pkgs.xclip
   ];
 
   programs.bash = {
