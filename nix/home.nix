@@ -38,6 +38,9 @@
     pkgs.xclip
   ];
 
+  xdg.configFile."starship.toml".source = ../home/.config/starship.toml;
+  xdg.configFile."flake8".source = ../home/.config/flake8;
+
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
@@ -62,8 +65,8 @@
   programs.tmux = {
     enable = true;
     terminal = "xterm-256color";
-    shortcut = "l";
     secureSocket = false;
+    extraConfig = (builtins.readFile ../home/.tmux.conf);
   };
 
   programs.alacritty = {
@@ -84,7 +87,7 @@
         ui = "auto";
       };
       diff = {
-        tool = "vimdiff";
+        tool = "nvim -d";
         mnemonicprefix = true;
       };
       merge = {
