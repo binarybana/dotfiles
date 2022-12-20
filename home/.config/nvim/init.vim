@@ -1,55 +1,3 @@
-runtime! plugin/python_setup.vim
-
-if !isdirectory(expand("~/.config/nvim/autoload"))
-  !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'w0rp/ale'
-Plug 'airblade/vim-rooter'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-" Completion plugins
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-
-Plug 'airblade/vim-rooter'
-
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fugitive'
-" Plug 'kien/ctrlp.vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'bling/vim-airline'
-Plug 'tomasr/molokai'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'godlygeek/tabular'
-" Plug 'neomake/neomake'
-" Plug 'scrooloose/syntastic'
-" Plug 'lervag/vim-latex'
-" Plug 'sjl/gundo.vim'
-" Plug 'derekwyatt/vim-scala'
-" Plug 'JuliaLang/julia-vim'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'rust-lang/rust.vim'
-" Plug 'sebastianmarkow/deoplete-rust'
-" Plug 'klen/python-mode'
-" Plug 'fatih/vim-go'
-" Plug 'zchee/deoplete-jedi'
-Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
-" For macos homebrew fzf:
-" Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-" Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin'}
-" Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
-" Plug 'roxma/nvim-completion-manager'
-call plug#end()
-
 map <C-j> 5j
 map <C-k> 5k
 
@@ -174,57 +122,12 @@ set hlsearch
 
 " Quick-save
 nmap <leader>w :w<CR>
-
-" RLS setup {{{
-" Required for operations modifying multiple buffers like rename.
 set hidden
-
-let g:LanguageClient_autoStart = 0
-nnoremap <leader>cs :LanguageClientStart<CR>
-nnoremap <leader>cp :LanguageClientStop<CR>
-" if you want it to turn on automatically
-" let g:LanguageClient_autoStart = 1
-
-let g:LanguageClient_settingsPath = "/home/jason/.vim/settings.json"
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
-    \ }
 
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
 noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
 noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
-
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-" Linter
-let g:ale_sign_column_always = 0
-" only lint on save
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 0
-let g:ale_rust_cargo_use_check = 1
-let g:ale_rust_cargo_check_all_targets = 1
-let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-s> <Plug>(ale_previous_wrap)
-nmap <silent> <C-n> <Plug>(ale_next_wrap)
-
-let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
-let g:rust_clip_command = 'xclip -selection clipboard'
-
-" Completion
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-" tab to select
-" and don't hijack my enter key
-" inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
-inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
 
 " Follow Rust code style rules
 au Filetype rust set colorcolumn=100

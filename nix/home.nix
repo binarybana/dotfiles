@@ -42,8 +42,13 @@
     enable = true;
     plugins = with pkgs.vimPlugins; [
       vim-nix
+      tcomment_vim
+      molokai
+      vim-airline
+      nerdtree
+      vim-rooter
     ];
-    extraConfig = (builtins.readFile ../home/.config/nvim/init.nim);
+    extraConfig = (builtins.readFile ../home/.config/nvim/init.vim);
   };
 
   programs.fish = {
