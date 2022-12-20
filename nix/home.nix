@@ -40,6 +40,7 @@
 
   xdg.configFile."starship.toml".source = ../home/.config/starship.toml;
   xdg.configFile."flake8".source = ../home/.config/flake8;
+  xdg.configFile."nix.conf".source = ../home/.config/nix.conf;
 
   programs.neovim = {
     enable = true;
