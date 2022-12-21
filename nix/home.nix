@@ -42,6 +42,11 @@
   xdg.configFile."flake8".source = ../home/.config/flake8;
   xdg.configFile."nix.conf".source = ../home/.config/nix.conf;
 
+  programs.vscode = {
+    enable = true;
+    userSettings = (builtins.readFile ../settings.json);
+  };
+
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
