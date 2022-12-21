@@ -29,6 +29,8 @@ set _git_log_brief_format '%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
 
 alias git=hub
 abbr -a g "git"
+abbr -a ga "git add"
+abbr -a gia "git add -u"
 abbr -a gb "git branch"
 abbr -a gbc "git checkout -b"
 abbr -a gcF "git commit --verbose --amend"

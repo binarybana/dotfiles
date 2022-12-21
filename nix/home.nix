@@ -41,11 +41,7 @@
   xdg.configFile."starship.toml".source = ../home/.config/starship.toml;
   xdg.configFile."flake8".source = ../home/.config/flake8;
   xdg.configFile."nix.conf".source = ../home/.config/nix.conf;
-
-  programs.vscode = {
-    enable = true;
-    userSettings = (builtins.readFile ../settings.json);
-  };
+  xdg.configFile."Code/User/settings.json".source = ../settings.json;
 
   programs.neovim = {
     enable = true;
