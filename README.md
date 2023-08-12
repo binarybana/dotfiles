@@ -22,7 +22,7 @@ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.p
 
 ## Ubuntu
 ```
-sudo pip install $(cat $HOME/.homesick/repos/dotfiles/pip-list)
+sudo apt install (cat pkg-list.apt)
 ```
 
 ## Fedora

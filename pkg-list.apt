@@ -1,15 +1,12 @@
-git install
-htop install
-dstat install
-curl install
-wget install
-neovim install
-tmux install
-build-essential install
-openssh-server install
-gimp install
-zsh install
-m4 install
-lld install
-
-# inkscape install
+git
+htop
+dstat
+curl
+wget
+neovim
+tmux
+build-essential
+openssh-server
+exa
+fish
+direnv

@@ -2,6 +2,11 @@
 map <C-j> 5j
 map <C-k> 5k
 
+call plug#begin()
+Plug 'tomasr/molokai'
+call plug#end()
+let g:molokai_original = 1
+
 set directory=$HOME/.vim/backup/,~/.tmp,~/tmp,/tmp
 set backupdir=$HOME/.vim/backup/,~/.tmp,~/tmp,/tmp
 set pastetoggle=<F2>
@@ -70,7 +75,6 @@ map <c-p> :FZF -m --bind=ctrl-z:toggle <CR>
 let g:fzf_buffers_jump = 1
 
 let g:rehash256 = 1
-colorscheme molokai
 
 let g:terminal_color_0  = '#2e3436'
 let g:terminal_color_1  = '#cc0000'

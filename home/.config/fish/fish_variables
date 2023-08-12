@@ -2,6 +2,7 @@
 # VERSION: 3.0
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_g:git
+SETUVAR _fish_abbr_ga:git\x20add
 SETUVAR _fish_abbr_gb:git\x20branch
 SETUVAR _fish_abbr_gbc:git\x20checkout\x20\x2db
 SETUVAR _fish_abbr_gcF:git\x20commit\x20\x2d\x2dverbose\x20\x2d\x2damend
@@ -13,6 +14,7 @@ SETUVAR _fish_abbr_gfc:git\x20clone
 SETUVAR _fish_abbr_gfm:git\x20pull
 SETUVAR _fish_abbr_gfr:git\x20pull\x20\x2d\x2drebase
 SETUVAR _fish_abbr_giD:git\x20diff\x20\x2d\x2dno\x2dext\x2ddiff\x20\x2d\x2dcached\x20\x2d\x2dword\x2ddiff
+SETUVAR _fish_abbr_gia:git\x20add\x20\x2du
 SETUVAR _fish_abbr_glb:git\x20log\x20\x2d\x2dtopo\x2dorder\x20\x2d\x2dpretty\x3dformat\x3a\x25C\x28green\x29\x25h\x25C\x28reset\x29\x20\x25s\x25C\x28red\x29\x25d\x25C\x28reset\x29\x25n
 SETUVAR _fish_abbr_glg:git\x20log\x20\x2d\x2dtopo\x2dorder\x20\x2d\x2dall\x20\x2d\x2dgraph\x20\x2d\x2dpretty\x3dformat\x3a
 SETUVAR _fish_abbr_gp:git\x20push
@@ -47,4 +49,4 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/opt/homebrew/bin\x1e/Users/jason/\x2ecargo/bin
+SETUVAR fish_user_paths:/home/ubuntu/\x2elocal/bin\x1e/home/ubuntu/bin\x1e/home/ubuntu/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Users/jason/\x2ecargo/bin

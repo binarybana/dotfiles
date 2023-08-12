@@ -65,5 +65,6 @@ end
 set -x TVM_HOME $HOME/src/tvm
 set -x PYTHONPATH $TVM_HOME/python $TVM_HOME/topi/python $TVM_HOME/nnvm/python $PYTHONPATH
 fish_add_path ~/.cargo/bin
+fish_add_path ~/bin
 
 direnv hook fish | source
