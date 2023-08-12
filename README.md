@@ -12,6 +12,8 @@ homeshick clone git@github.com:binarybana/dotfiles.git
 
 ## Mac
 ```
+# Install Brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 homeshick cd dotfiles
 brew bundle
 cp settings.json "~/Library/Application Support/Code/User/"
@@ -33,12 +35,13 @@ sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmf
 ```
 
 # All
-
-- Open vim: `:PluginInstall` Or `PlugInstall` for neovim apparently.
 ```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 chsh --shell /bin/fish
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install cross cargo-edit cargo-watch just
 curl -fsSL https://starship.rs/install.sh | bash
 ```
+- Open vim: `:PluginInstall` Or `PlugInstall` for neovim apparently.
 
