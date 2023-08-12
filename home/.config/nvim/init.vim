@@ -3,12 +3,12 @@ map <C-j> 5j
 map <C-k> 5k
 
 call plug#begin()
-Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 call plug#end()
-let g:molokai_original = 1
+autocmd vimenter * ++nested colorscheme gruvbox
 
-set directory=$HOME/.vim/backup/,~/.tmp,~/tmp,/tmp
-set backupdir=$HOME/.vim/backup/,~/.tmp,~/tmp,/tmp
+set directory=/tmp
+set backupdir=/tmp
 set pastetoggle=<F2>
 set showcmd
 set cmdheight=2
