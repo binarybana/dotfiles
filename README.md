@@ -3,7 +3,7 @@
 First make sure you have Git worthy ssh creds. Then
 ```
 # Install Homeshick
-git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 printf '\nsource $HOME/.homesick/repos/homeshick/homeshick.sh\n' >> $HOME/.bashrc
 source $HOME/.bashrc
 
