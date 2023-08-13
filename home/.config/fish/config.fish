@@ -68,3 +68,4 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/bin
 
 direnv hook fish | source
+source ~/.homesick/repos/homeshick/homeshick.fish
