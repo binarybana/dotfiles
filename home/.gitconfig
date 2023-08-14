@@ -20,7 +20,7 @@
 	date = local
 
 [core]
-	excludesfile = /home/bana/.gitignore_global
+	excludesfile = /etc/gitignore_global
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
@@ -30,3 +30,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main

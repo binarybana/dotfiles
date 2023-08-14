@@ -36,6 +36,7 @@ sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmf
 
 # All
 ```
+sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 chsh --shell /bin/fish
