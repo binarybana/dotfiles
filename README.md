@@ -43,6 +43,9 @@ chsh --shell /bin/fish
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install cross cargo-edit cargo-watch just
 curl -fsSL https://starship.rs/install.sh | bash
+curl -LO https://dl.k8s.io/release/(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
 ```
 - Open vim: `:PluginInstall` Or `PlugInstall` for neovim apparently.
 
