@@ -39,11 +39,16 @@ sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmf
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
 chsh --shell /bin/fish
 
-#Install nix
+# Install nix
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 nix profile install --stdin < $HOME/.homesick/repos/dotfiles/pkg-list.nix
-cargo binstall cross cargo-edit cargo-watch
+cargo binstall cross cargo-edit cargo-watch atuin
 
+atuin login -u <USERNAME>
+
+# Make sure to get ~/.aws/config from 1Password
+# TODO: make this a CLI task using 1Password CLI
+# Reminder: aws sso login --profile sandbox
 ```
 - Open neovim: :PluginInstall .
 

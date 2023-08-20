@@ -1,9 +1,3 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
-starship init fish | source
-
 ###### SHORTCUTS #####
 alias oa='exa -a --group-directories-first'
 alias o='exa --group-directories-first'
@@ -68,5 +62,18 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
 
-direnv hook fish | source
-source ~/.homesick/repos/homeshick/homeshick.fish
+if status is-interactive
+  # Commands to run in interactive sessions can go here
+  starship init fish | source
+  direnv hook fish | source
+  source ~/.homesick/repos/homeshick/homeshick.fish
+
+  # Add completions for AWS CLI
+  if test -x (which aws_completer)
+    complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+  end
+
+  atuin init fish | source
+  # If I want to disable up arrow ^^^: --disable-up-arrow
+end
+
