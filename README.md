@@ -24,7 +24,7 @@ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.p
 
 ## Ubuntu
 ```
-sudo apt install (cat pkg-list.apt)
+sudo apt install $(cat $HOME/.homesick/dotfiles/pkg-list.apt)
 ```
 
 ## Fedora
@@ -41,11 +41,12 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 chsh --shell /bin/fish
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install cross cargo-edit cargo-watch just
-curl -fsSL https://starship.rs/install.sh | bash
-curl -LO https://dl.k8s.io/release/(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+#Install nix
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+nix profile install --stdin < $HOME/.homesick/repos/dotfiles/pkg-list.nix
+cargo binstall cross cargo-edit cargo-watch
 
 ```
-- Open vim: `:PluginInstall` Or `PlugInstall` for neovim apparently.
+- Open neovim: :PluginInstall .
 
