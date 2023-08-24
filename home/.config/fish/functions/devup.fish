@@ -19,10 +19,6 @@ function devdown
   aws ec2 stop-instances --instance-ids i-07884ad40ea9456ce --profile sandbox
 end
 
-function devlogin
-  aws sso login --sso-session octosession
-end
-
 function get_ip
   set -g ip_address (aws ec2 describe-instances --instance-ids i-07884ad40ea9456ce --output json --profile sandbox |
           jq -r '.Reservations[].Instances[].PublicIpAddress')
