@@ -1,3 +1,3 @@
 function devlogin
-  aws sso login --sso-session octosession
+  aws sso login --sso-session octoml
 end
