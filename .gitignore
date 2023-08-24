@@ -1,3 +1,6 @@
 home/.unison
 home/.ssh/*
 !home/.ssh/config
+home/.aws
+home/.config/fish/conf.d
+home/.config/op
