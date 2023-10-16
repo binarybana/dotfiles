@@ -16,6 +16,11 @@
   boot.loader.grub.useOSProber = true;
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_5_15;
+
+  # Enable all sysrq functions (useful to recover from some issues):
+  boot.kernel.sysctl."kernel.sysrq" = 1; # NixOS default: 16 (only the sync command)
+  # Documentation: https://www.kernel.org/doc/html/latest/admin-guide/sysrq.html
 
   networking.hostName = "alderwhale"; # Define your hostname.
 
@@ -48,6 +53,9 @@
       experimental-features = nix-command flakes
     '';
    };
+
+  # Since this is system wide, and I got an error about it.
+  programs.fish.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jason = {

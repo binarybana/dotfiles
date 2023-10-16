@@ -11,6 +11,7 @@
   programs.direnv.nix-direnv.enable = true;
   home.enableNixpkgsReleaseCheck = true;
 
+
   home.packages = [
     pkgs.tmux
     pkgs.bat
