@@ -1,0 +1,4 @@
+Host aws
+  HostName 18.237.32.7
+  IdentityFile ~/.ssh/jknight-dev.pem
+  User ubuntu

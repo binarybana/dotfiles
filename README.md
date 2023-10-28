@@ -27,28 +27,24 @@ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.p
 sudo apt install $(cat $HOME/.homesick/dotfiles/pkg-list.apt)
 ```
 
-## Fedora
-```
-sudo dnf install $(cat $HOME/.homesick/repos/dotfiles/pkg-list.dnf)
-sudo dnf install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-sudo dnf install --nogpgcheck -y http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-```
-
 # All
 ```
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
 chsh --shell /bin/fish
 
-# Install nix
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
+# Install nix (use determinate's installer for uninstall capability)
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 nix profile install --stdin < $HOME/.homesick/repos/dotfiles/pkg-list.nix
 cargo binstall cross cargo-edit cargo-watch atuin
 
 atuin login -u <USERNAME>
 
+mkdir -p $HOME/.ssh/config.d
+cp $HOME/.homesick/repos/dotfiles/home/.sshconfig $HOME/.ssh/config
+cp $HOME/.homesick/repos/dotfiles/home/.sshconfigaws $HOME/.ssh/config.d/aws
+
 # Make sure to get ~/.aws/config from 1Password
 # TODO: make this a CLI task using 1Password CLI
-# Reminder: aws sso login --profile sandbox
 ```
 - Open neovim: :PluginInstall .
 
