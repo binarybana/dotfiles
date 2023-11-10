@@ -20,6 +20,16 @@ cp settings.json "~/Library/Application Support/Code/User/"
 
 # Poetry
 curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+
+# Install yabai and skhd
+yabai --install-service
+skhd --install-service
+# Then add to skhd plist:
+# +  <key>SHELL</key>
+# +  <string>/bin/dash</string>
+
+# Then Settings -> Securtiy -> Accessibility, enable skhd and yabai
+# Also Settings -> Desktop and Dock -> Turn off "Automatically rearrange windows based on last use"
 ```
 
 ## Ubuntu
