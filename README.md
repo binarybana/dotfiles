@@ -42,12 +42,15 @@ sudo apt install $(cat $HOME/.homesick/dotfiles/pkg-list.apt)
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
 chsh --shell /bin/fish
 
-# Install nix (use determinate's installer for uninstall capability)
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-nix profile install --stdin < $HOME/.homesick/repos/dotfiles/pkg-list.nix
+# Cargo binstall
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 cargo binstall cross cargo-edit cargo-watch atuin
 
 atuin login -u <USERNAME>
+
+# Install nix (use determinate's installer for uninstall capability)
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+nix profile install --stdin < $HOME/.homesick/repos/dotfiles/pkg-list.nix
 
 mkdir -p $HOME/.ssh/config.d
 cp $HOME/.homesick/repos/dotfiles/home/.sshconfig $HOME/.ssh/config
