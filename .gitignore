@@ -5,3 +5,4 @@ home/.aws
 home/.config/fish/conf.d
 home/.config/op
 home/.config/fish/fish_variables
+Brewfile.lock.json
