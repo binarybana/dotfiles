@@ -1,6 +1,20 @@
-Include ./config.d/aws
+Include config.d/aws
 
 Host *
   ControlMaster auto
   ControlPath /tmp/ssh-%r@%h:%p
+  ServerAliveInterval 60
+  ServerAliveCountMax 10
 
+Host github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa
+  UseKeychain yes
+
+Host prakalp
+  User binarybana
+  HostName 34.219.138.173
+
+Host p4de
+  User ubuntu
+  HostName ec2-54-88-153-91.compute-1.amazonaws.com
