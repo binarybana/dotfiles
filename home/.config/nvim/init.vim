@@ -12,7 +12,8 @@ set backupdir=/tmp
 set pastetoggle=<F2>
 set showcmd
 set cmdheight=2
-set number
+set number                     " Show current line number
+set relativenumber             " Show relative line numbers
 set autoindent
 set ruler
 let mapleader = ","
