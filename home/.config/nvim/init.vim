@@ -64,7 +64,7 @@ nnoremap <F5> :GundoToggle<CR>
 map <leader>c<space> :TComment<CR>
 map <leader>cb :TCommentBlock<CR>
 
-nmap <Space> i_<Esc>r
+" nmap <Space> i_<Esc>r
 map <leader>e :e <C-R>=expand("%:h")<cr>/
 " map <leader>w :w <C-R>=expand("%:h")<cr>/
 map <leader>sa :sav <C-R>=expand("%:h")<cr>/
