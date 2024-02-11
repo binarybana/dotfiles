@@ -4,14 +4,20 @@ set -o nounset   # abort on unbound variable
 set -o pipefail  # don't hide errors within pipes
 set -x # Debug printing
 
-PLATFORM=$(uname-s)
+PLATFORM=$(uname -s)
 
-git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
-printf '\nsource $HOME/.homesick/repos/homeshick/homeshick.sh\n' >> $HOME/.bashrc
-source $HOME/.bashrc
 
-# TODO: automatically fall back to https if we don't have ssh github creds
-homeshick clone git@github.com:binarybana/dotfiles.git
+if [ ! -d $HOME/.homesick/repos/homeshick ]; then
+    git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+    printf '\nsource $HOME/.homesick/repos/homeshick/homeshick.sh\n' >> $HOME/.bashrc
+fi
+source $HOME/.homesick/repos/homeshick/homeshick.sh
+
+if [ ! -d $HOME/.homesick/repos/dotfiles ]; then
+    # TODO: automatically fall back to https if we don't have ssh github creds
+    homeshick clone -b git@github.com:binarybana/dotfiles.git
+    homeshick link -b dotfiles
+fi
 
 if [ "$PLATFORM" == "Linux" ];
 then
@@ -30,25 +36,28 @@ then
 else
     echo "Platform $PLATFORM not supported"
     exit -1
+fi
 
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
-chsh --shell /bin/fish
+sudo chsh --shell /bin/fish $(whoami)
 
 # Cargo binstall
+mkdir -p $HOME/.cargo/bin
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-cargo binstall atuin
+$HOME/.cargo/bin/cargo-binstall -y atuin
 
 # Install diff-so-fancy
 pushd $HOME/bin
 wget https://github.com/so-fancy/diff-so-fancy/archive/refs/tags/v1.4.4.tar.gz
 tar xzf v1.4.4.tar.gz
 rm v1.4.4.tar.gz
-ln -s diff-so-fancy-1.4.4/diff-so-fancy .
+ln -sf diff-so-fancy-1.4.4/diff-so-fancy .
 popd
 
 mkdir -p $HOME/.ssh/config.d
 cp $HOME/.homesick/repos/dotfiles/home/.sshconfig $HOME/.ssh/config
-cp $HOME/.homesick/repos/dotfiles/home/.sshconfigaws $HOME/.ssh/config.d/aws
+cp $HOME/.homesick/repos/dotfiles/home/.sshconfig_aws $HOME/.ssh/config.d/aws
 
+set +x
 echo "binarybana/dotfiles: Now run ./$HOME/.homesick/repos/dotfiles/install_interactive.sh"
 echo "binarybana/dotfiles: for interactive install"
