@@ -16,7 +16,7 @@ source $HOME/.homesick/repos/homeshick/homeshick.sh
 if [ ! -d $HOME/.homesick/repos/dotfiles ]; then
     # TODO: automatically fall back to https if we don't have ssh github creds
     homeshick clone -b git@github.com:binarybana/dotfiles.git
-    homeshick link -b dotfiles
+    homeshick link -fb dotfiles
 fi
 
 if [ "$PLATFORM" == "Linux" ];
