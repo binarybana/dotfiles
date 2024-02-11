@@ -1,14 +1,2 @@
-git
-htop
-dstat
-curl
-wget
-neovim
-tmux
 build-essential
 openssh-server
-exa
-fish
-direnv
-ripgrep
-jq

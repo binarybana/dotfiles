@@ -1,5 +1,7 @@
 brew "neovim"
 brew "python"
+brew "pyenv"
+brew "pipx"
 brew "kubectl"
 brew "tmux"
 brew "hub"
