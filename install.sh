@@ -39,7 +39,7 @@ else
 fi
 
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
-sudo chsh --shell /bin/fish $(whoami)
+sudo chsh "$(id -un)" --shell "/usr/bin/fish"
 
 # Cargo binstall
 mkdir -p $HOME/.cargo/bin
