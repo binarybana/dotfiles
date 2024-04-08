@@ -54,6 +54,9 @@ rm v1.4.4.tar.gz
 ln -sf diff-so-fancy-1.4.4/diff-so-fancy .
 popd
 
+# Starship
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
+
 mkdir -p $HOME/.ssh/config.d
 cp $HOME/.homesick/repos/dotfiles/home/.sshconfig $HOME/.ssh/config
 cp $HOME/.homesick/repos/dotfiles/home/.sshconfig_aws $HOME/.ssh/config.d/aws
