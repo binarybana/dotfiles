@@ -50,8 +50,9 @@ pushd $HOME/bin
 # $HOME/.cargo/bin/cargo-binstall -y atuin
 wget https://github.com/atuinsh/atuin/releases/download/v18.3.0/atuin-x86_64-unknown-linux-gnu.tar.gz
 tar xzf atuin-x86_64-unknown-linux-gnu.tar.gz
-mv atuin-x86_64-unknown-linux-gnu atuin
+mv atuin-x86_64-unknown-linux-gnu/atuin atuin
 rm atuin-x86_64-unknown-linux-gnu.tar.gz
+rm -rf atuin-x86_64-unknown-linux-gnu
 
 # Install diff-so-fancy
 wget https://github.com/so-fancy/diff-so-fancy/archive/refs/tags/v1.4.4.tar.gz
