@@ -44,10 +44,16 @@ sudo chsh "$(id -un)" --shell "/usr/bin/fish"
 # Cargo binstall
 mkdir -p $HOME/.cargo/bin
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-$HOME/.cargo/bin/cargo-binstall -y atuin
+
+pushd $HOME/bin
+# Workaround binstall issue for atuin https://github.com/cargo-bins/cargo-binstall/issues/1806
+# $HOME/.cargo/bin/cargo-binstall -y atuin
+wget https://github.com/atuinsh/atuin/releases/download/v18.3.0/atuin-x86_64-unknown-linux-gnu.tar.gz
+tar xzf atuin-x86_64-unknown-linux-gnu.tar.gz
+mv atuin-x86_64-unknown-linux-gnu atuin
+rm atuin-x86_64-unknown-linux-gnu.tar.gz
 
 # Install diff-so-fancy
-pushd $HOME/bin
 wget https://github.com/so-fancy/diff-so-fancy/archive/refs/tags/v1.4.4.tar.gz
 tar xzf v1.4.4.tar.gz
 rm v1.4.4.tar.gz

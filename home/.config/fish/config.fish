@@ -59,6 +59,7 @@ end
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/bin
+fish_add_path /opt/homebrew/bin
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
@@ -74,3 +75,6 @@ if status is-interactive
   atuin init fish --disable-up-arrow | source
 end
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jason/octoml/tmp/google-cloud-sdk/path.fish.inc' ]; . '/Users/jason/octoml/tmp/google-cloud-sdk/path.fish.inc'; end
