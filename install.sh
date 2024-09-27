@@ -25,6 +25,7 @@ then
     echo "binarybana/dotfiles: see `install_phase2.sh` for everything else"
     sudo apt update
     sudo apt install -y $(cat $HOME/.homesick/repos/dotfiles/pkg-list-essential.apt)
+    sudo chsh "$(id -un)" --shell "/usr/bin/fish"
 elif [ "$PLATFORM" == "Darwin" ];
 then
     # Install Brew
@@ -33,13 +34,15 @@ then
     brew bundle
     cp $HOME/.homesick/repos/dotfiles/home/.config/Code/User/settings.json "~/Library/Application Support/Code/User/"
     cd $HOME
+    echo $(which fish) | sudo tee -a /etc/shells
+    chsh -s $(which fish)
 else
     echo "Platform $PLATFORM not supported"
     exit -1
 fi
 
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
-sudo chsh "$(id -un)" --shell "/usr/bin/fish"
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Cargo binstall
 mkdir -p $HOME/.cargo/bin

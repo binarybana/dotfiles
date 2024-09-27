@@ -2,6 +2,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+config.font_size = 22
+
 config.color_scheme = 'Arthur'
 -- Slightly transparent and blurred background
 config.window_background_opacity = 0.9
@@ -16,8 +18,8 @@ config.window_decorations = 'RESIZE|INTEGRATED_BUTTONS'
 config.window_frame = {
   -- Berkeley Mono for me again, though an idea could be to try a
   -- serif font here instead of monospace for a nicer look?
-  font = wezterm.font({ family = 'Berkeley Mono', weight = 'Bold' }),
-  font_size = 11,
+  font = wezterm.font({ family = 'Berkeley Serif', weight = 'Bold' }),
+  font_size = 14,
 }
 
 wezterm.on('update-status', function(window)

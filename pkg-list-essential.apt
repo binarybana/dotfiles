@@ -4,7 +4,7 @@ curl
 wget
 neovim
 tmux
-exa
+eza
 fish
 direnv
 ripgrep

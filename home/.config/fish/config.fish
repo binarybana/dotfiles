@@ -1,7 +1,7 @@
 ###### SHORTCUTS #####
-alias oa='exa -a --group-directories-first'
-alias o='exa --group-directories-first'
-alias oo='exa -l --group-directories-first'
+alias oa='eza -a --group-directories-first'
+alias o='eza --group-directories-first'
+alias oo='eza -l --group-directories-first'
 alias bc='bc -l'
 
 alias vim=nvim
