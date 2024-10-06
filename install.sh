@@ -21,8 +21,6 @@ fi
 
 if [ "$PLATFORM" == "Linux" ];
 then
-    echo "binarybana/dotfiles: Installing only the essentials here"
-    echo "binarybana/dotfiles: see `install_phase2.sh` for everything else"
     sudo apt update
     sudo apt install -y $(cat $HOME/.homesick/repos/dotfiles/pkg-list-essential.apt)
     sudo chsh "$(id -un)" --shell "/usr/bin/fish"
@@ -51,11 +49,7 @@ curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-
 pushd $HOME/bin
 # Workaround binstall issue for atuin https://github.com/cargo-bins/cargo-binstall/issues/1806
 # $HOME/.cargo/bin/cargo-binstall -y atuin
-wget https://github.com/atuinsh/atuin/releases/download/v18.3.0/atuin-x86_64-unknown-linux-gnu.tar.gz
-tar xzf atuin-x86_64-unknown-linux-gnu.tar.gz
-mv atuin-x86_64-unknown-linux-gnu/atuin atuin
-rm atuin-x86_64-unknown-linux-gnu.tar.gz
-rm -rf atuin-x86_64-unknown-linux-gnu
+bash -c "bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)"
 
 # Install diff-so-fancy
 wget https://github.com/so-fancy/diff-so-fancy/archive/refs/tags/v1.4.4.tar.gz
@@ -69,7 +63,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 mkdir -p $HOME/.ssh/config.d
 cp $HOME/.homesick/repos/dotfiles/home/.sshconfig $HOME/.ssh/config
-cp $HOME/.homesick/repos/dotfiles/home/.sshconfig_aws $HOME/.ssh/config.d/aws
+#cp $HOME/.homesick/repos/dotfiles/home/.sshconfig_aws $HOME/.ssh/config.d/aws
 
 set +x
 echo "binarybana/dotfiles: Now run ./$HOME/.homesick/repos/dotfiles/install_interactive.sh"
