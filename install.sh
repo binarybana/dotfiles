@@ -63,8 +63,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 mkdir -p $HOME/.ssh/config.d
 cp $HOME/.homesick/repos/dotfiles/home/.sshconfig $HOME/.ssh/config
-#cp $HOME/.homesick/repos/dotfiles/home/.sshconfig_aws $HOME/.ssh/config.d/aws
 
 set +x
 echo "binarybana/dotfiles: Now run ./$HOME/.homesick/repos/dotfiles/install_interactive.sh"
-echo "binarybana/dotfiles: for interactive install"
+echo "binarybana/dotfiles: for interactive portions of the install"
