@@ -20,3 +20,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 nix profile install --stdin < $HOME/.homesick/repos/dotfiles/pkg-list.nix
 ```
+
+From a Dockerfile for passwordless sudo:
+```
+sudo bash -c "cat <<<'jaknight ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/jaknight"
+```
