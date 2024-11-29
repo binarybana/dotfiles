@@ -1,4 +1,3 @@
-brew "neovim"
 brew "kubectl"
 brew "tmux"
 brew "hub"

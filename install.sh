@@ -6,7 +6,6 @@ set -x # Debug printing
 
 PLATFORM=$(uname -s)
 
-
 if [ ! -d $HOME/.homesick/repos/homeshick ]; then
     git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
     printf '\nsource $HOME/.homesick/repos/homeshick/homeshick.sh\n' >> $HOME/.bashrc
@@ -18,6 +17,8 @@ if [ ! -d $HOME/.homesick/repos/dotfiles ]; then
     homeshick clone -b git@github.com:binarybana/dotfiles.git
     homeshick link -fb dotfiles
 fi
+
+mkdir $HOME/bin
 
 if [ "$PLATFORM" == "Linux" ];
 then
@@ -46,7 +47,9 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 mkdir -p $HOME/.cargo/bin
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
+# INSTALL BINARIES
 pushd $HOME/bin
+
 # Workaround binstall issue for atuin https://github.com/cargo-bins/cargo-binstall/issues/1806
 # $HOME/.cargo/bin/cargo-binstall -y atuin
 bash -c "bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)"
@@ -56,6 +59,20 @@ wget https://github.com/so-fancy/diff-so-fancy/archive/refs/tags/v1.4.4.tar.gz
 tar xzf v1.4.4.tar.gz
 rm v1.4.4.tar.gz
 ln -sf diff-so-fancy-1.4.4/diff-so-fancy .
+
+# Install up to date neovim
+if [ "$PLATFORM" == "Linux" ];
+then
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+tar xzf nvim-linux64.tar.gz
+ln -s nvim-linux64/bin/nvim .
+elif [ "$PLATFORM" == "Darwin" ];
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
+tar xzf nvim-macos-arm64.tar.gz
+ln -s nvim-macos-arm64/bin/nvim .
+fi
+
+# NO MORE BINARIES
 popd
 
 # Starship

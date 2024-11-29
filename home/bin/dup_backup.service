@@ -1,6 +1,0 @@
-[Unit]
-Description=Duplicity backup every day
-
-[Service]
-User=jknight
-ExecStart=/usr/bin/julia /home/jknight/bin/dup_backup.jl
