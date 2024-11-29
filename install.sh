@@ -41,7 +41,11 @@ else
 fi
 
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
+
+# Astral's uv (amazeballs!)
 curl -LsSf https://astral.sh/uv/install.sh | sh
+uv tool install ruff
+# uv tool install pyright
 
 # Cargo binstall
 mkdir -p $HOME/.cargo/bin
