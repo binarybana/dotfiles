@@ -72,8 +72,11 @@ tar xzf nvim-macos-arm64.tar.gz
 ln -s nvim-macos-arm64/bin/nvim .
 fi
 
-# NO MORE BINARIES
+# NO MORE BINARIES IN $HOME/bin
 popd
+
+# Delta (git diffing)
+$HOME/.cargo/bin/cargo-binstall -y delta
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
