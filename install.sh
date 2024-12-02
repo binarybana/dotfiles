@@ -80,7 +80,7 @@ fi
 popd
 
 # Delta (git diffing)
-$HOME/.cargo/bin/cargo-binstall -y delta
+$HOME/.cargo/bin/cargo-binstall -y git-delta
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
