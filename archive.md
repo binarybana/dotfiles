@@ -25,3 +25,10 @@ From a Dockerfile for passwordless sudo:
 ```
 sudo bash -c "cat <<<'jaknight ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/jaknight"
 ```
+
+## Installing a NerdFont in Ubuntu
+Follow [this guide](https://gist.github.com/matthewjberger/7dd7e079f282f8138a9dc3b045ebefa0) but use the DroidSans font:
+```
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/DroidSansMono.zip
+```
+unzip DroidSansMono.zip into ~/.fonts

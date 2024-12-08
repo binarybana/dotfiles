@@ -18,7 +18,7 @@ if [ ! -d $HOME/.homesick/repos/dotfiles ]; then
     homeshick link -fb dotfiles
 fi
 
-mkdir $HOME/bin
+mkdir -p $HOME/bin
 
 if [ "$PLATFORM" == "Linux" ];
 then
@@ -44,7 +44,7 @@ sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
 
 # Astral's uv (amazeballs!)
 curl -LsSf https://astral.sh/uv/install.sh | sh
-uv tool install ruff
+$HOME/.local/bin/uv tool install ruff
 # uv tool install pyright
 
 # Cargo binstall
@@ -71,6 +71,7 @@ wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.
 tar xzf nvim-linux64.tar.gz
 ln -s nvim-linux64/bin/nvim .
 elif [ "$PLATFORM" == "Darwin" ];
+then
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
 tar xzf nvim-macos-arm64.tar.gz
 ln -s nvim-macos-arm64/bin/nvim .
