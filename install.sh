@@ -78,6 +78,7 @@ ln -s nvim-macos-arm64/bin/nvim .
 fi
 
 # NO MORE BINARIES IN $HOME/bin
+# DONE WITH $HOME/bin
 popd
 
 # Delta (git diffing)

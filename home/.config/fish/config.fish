@@ -78,3 +78,8 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jason/octoml/tmp/google-cloud-sdk/path.fish.inc' ]; . '/Users/jason/octoml/tmp/google-cloud-sdk/path.fish.inc'; end
+
+abbr -a pip -- echo "Use UV!"
+
+# uv
+fish_add_path "/home/jaknight/.local/bin"
