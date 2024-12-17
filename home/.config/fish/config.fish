@@ -17,7 +17,7 @@ alias ks="--namespace=kube-system"
 alias an="--all-namespaces"
 alias ac="--all-containers"
 
-set _git_log_brief_format '%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
+set _git_log_oneline_format '%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
 set _git_log_brief_format '%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
 
 
@@ -36,8 +36,8 @@ abbr -a gfc "git clone"
 abbr -a gfm "git pull"
 abbr -a gfr "git pull --rebase"
 abbr -a giD "git diff --no-ext-diff --cached --word-diff"
-abbr -a glb "git log --topo-order --pretty=format:$_git_log_brief_format"
-abbr -a glg "git log --topo-order --all --graph --pretty=format:$_git_log_oneline_format"
+abbr -a glb "git log --topo-order --pretty=format:\"$_git_log_brief_format\""
+abbr -a glg "git log --topo-order --all --graph --pretty=format:\"$_git_log_oneline_format\""
 abbr -a gp "git push"
 abbr -a gpf "git push --force"
 abbr -a gwd "git diff --no-ext-diff"
