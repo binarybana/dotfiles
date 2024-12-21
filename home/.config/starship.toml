@@ -26,3 +26,6 @@ disabled = true
 
 [rust]
 disabled = false
+
+[hostname]
+ssh_only = false

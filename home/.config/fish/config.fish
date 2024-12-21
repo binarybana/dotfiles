@@ -21,7 +21,7 @@ set _git_log_oneline_format '%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red
 set _git_log_brief_format '%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
 
 
-alias git=hub
+# alias git=hub
 abbr -a g "git"
 abbr -a ga "git add"
 abbr -a gia "git add -u"
@@ -55,6 +55,14 @@ function flakify
   $EDITOR flake.nix
 end
 
+function is_nv
+    if test -f /usr/bin/salloc
+        return 0
+    else
+        return 1
+    end
+end
+
 ####### PATH SETUP ########
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
@@ -72,14 +80,27 @@ if status is-interactive
     complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
   end
 
-  atuin init fish --disable-up-arrow | source
+  if is_nv
+	  set ATUINDIR /tmp/tmp-atuin-lbzvha
+	  mkdir -p $ATUINDIR
+	  chown $USER $ATUINDIR
+	  chmod 700 $ATUINDIR
+	  mkdir -p $HOME/.local/share
+	  ln -sf $HOME/.local/share/atuin $ATUINDIR
+	  atuin init fish --disable-up-arrow | source
+	  atuin import auto > /dev/null 2>&1
+  else
+	  atuin init fish --disable-up-arrow | source
+  end
+
 end
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jason/octoml/tmp/google-cloud-sdk/path.fish.inc' ]; . '/Users/jason/octoml/tmp/google-cloud-sdk/path.fish.inc'; end
 
 abbr -a pip -- echo "Use UV!"
 
 # uv
 fish_add_path "/home/jaknight/.local/bin"
+
+if is_nv
+	alias crun="/home/scratch.svc_compute_arch/release/crun/latest/crun/crun"
+	alias cdb="/home/scratch.svc_compute_arch/release/cdb/latest/cdb"
+end
