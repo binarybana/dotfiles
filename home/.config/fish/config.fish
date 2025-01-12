@@ -1,4 +1,4 @@
-###### SHORTCUTS #####
+
 alias oa='eza -a --group-directories-first'
 alias o='eza --group-directories-first'
 alias oo='eza -l --group-directories-first'
@@ -89,18 +89,19 @@ if status is-interactive
 	  ln -sf $HOME/.local/share/atuin $ATUINDIR
 	  atuin init fish --disable-up-arrow | source
 	  atuin import auto > /dev/null 2>&1
+	  alias crun="/home/scratch.svc_compute_arch/release/crun/latest/crun/crun"
+	  alias cdb="/home/scratch.svc_compute_arch/release/cdb/latest/cdb"
   else
 	  atuin init fish --disable-up-arrow | source
   end
 
+  abbr -a pip -- echo "Use UV!"
+
+  # fzf
+  if test -x (which fzf)
+    set FZF_CTRL_R_OPTS ""
+    fzf --fish | source
+  end
 end
-
-abbr -a pip -- echo "Use UV!"
-
-# uv
-fish_add_path "/home/jaknight/.local/bin"
-
-if is_nv
-	alias crun="/home/scratch.svc_compute_arch/release/crun/latest/crun/crun"
-	alias cdb="/home/scratch.svc_compute_arch/release/cdb/latest/cdb"
-end
+ 
+source $HOME/.config/fish/themes/tokyonight_night.fish
