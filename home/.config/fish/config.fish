@@ -8,6 +8,10 @@ alias vim=nvim
 alias vi=nvim
 set -gx EDITOR nvim
 
+set -gx LANG en_US.UTF-8
+set -gx LC_ALL en_US.UTF-8
+set -gx LC_CTYPE en_US.UTF-8
+
 alias k=kubectl
 alias kg="kubectl get"
 alias kgp="kubectl get pods"
@@ -56,7 +60,7 @@ function flakify
 end
 
 function is_nv
-    if test -f /usr/bin/salloc
+    if test -e /home/scratch.svc_compute_arch
         return 0
     else
         return 1
@@ -81,6 +85,7 @@ if status is-interactive
   end
 
   if is_nv
+	  set -gx ON_NV 1
 	  set ATUINDIR /tmp/tmp-atuin-lbzvha
 	  mkdir -p $ATUINDIR
 	  chown $USER $ATUINDIR
