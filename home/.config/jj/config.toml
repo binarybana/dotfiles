@@ -1,3 +1,11 @@
 [user]
 name = "Jason Knight"
 email = "binarybana@gmail.com"
+
+[colors]
+# Highlight hunks with background
+"diff removed token" = { bg = "#221111", underline = false }
+"diff added token" = { bg = "#002200", underline = false }
+
+[ui]
+default-command = "log"
