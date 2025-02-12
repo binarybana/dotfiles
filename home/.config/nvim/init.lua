@@ -175,22 +175,51 @@ require("lazy").setup({
 			},
 		},
 	},
-
-	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-	--
-	-- This is often very useful to both group configuration, as well as handle
-	-- lazy loading plugins that don't need to be loaded immediately at startup.
-	--
-	-- For example, in the following configuration, we use:
-	--  event = 'VimEnter'
-	--
-	-- which loads which-key before all the UI elements are loaded. Events can be
-	-- normal autocommands events (`:help autocmd-events`).
-	--
-	-- Then, because we use the `config` key, the configuration only runs
-	-- after the plugin has been loaded:
-	--  config = function() ... end
-
+	{
+	  "olimorris/codecompanion.nvim",
+	  config = true,
+	  cmd = "CodeCompanionChat",
+	  dependencies = {
+	    "nvim-lua/plenary.nvim",
+	    "nvim-treesitter/nvim-treesitter",
+	  },
+	  opts = {
+	    adapters = {
+	      azure_openai = function()
+	        return require("codecompanion.adapters").extend("azure_openai", {
+	          env = {
+	            api_key = "OPENAI_API_KEY",
+	            endpoint = "https://llm-proxy.perflab.nvidia.com",
+	            api_version="2025-01-01-preview",
+	            deployment = "claude-3-5-sonnet-20241022",
+	          },
+	          headers = {
+	            ["Content-Type"] = "application/json",
+	            ["Authorization"] = "Bearer ${api_key}",
+	          },
+	          schema = {
+	            model = {
+	      	default = "claude-3-5-sonnet-20241022",
+	      	choices ={["claude-3-5-sonnet-20241022"] = {opts = {stream = true}}} 
+	            },
+	          },
+	        })
+	      end,
+	    },
+	    strategies = {
+	      chat = {
+	        adapter = "azure_openai",
+	      },
+	      inline = {
+	        adapter = "azure_openai",
+	      },
+	    },
+	    opts = {
+	    -- Set debug logging
+	    log_level = "DEBUG",
+	  },
+	  }
+	},
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -501,7 +530,6 @@ require("lazy").setup({
 					end
 				end,
 			})
-
 			-- Change diagnostic symbols in the sign column (gutter)
 			-- if vim.g.have_nerd_font then
 			--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
@@ -591,11 +619,11 @@ require("lazy").setup({
 			require("lspconfig").ruff.setup({})
 			require("lspconfig").pyright.setup({})
 			require("lspconfig").clangd.setup({})
-      require("lspconfig").rust_analyzer.setup({
-          on_attach = function(client, bufnr)
-              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-          end
-      })
+			require("lspconfig").rust_analyzer.setup({
+			    on_attach = function(client, bufnr)
+			        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+			    end
+			})
 		end,
 	},
 
