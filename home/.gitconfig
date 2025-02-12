@@ -1,7 +1,7 @@
 ; user identity
 [user]
   name = "Jason Knight"
-  email = "binarybana@gmail.com"
+  email = "392846+binarybana@users.noreply.github.com"
 
 [color]
 	status = auto
@@ -35,7 +35,7 @@
 	defaultBranch = main
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --diff-so-fancy
 
 [delta]
     navigate = true  # use n and N to move between diff sections

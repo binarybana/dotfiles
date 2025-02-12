@@ -1,6 +1,6 @@
 [user]
 name = "Jason Knight"
-email = "binarybana@gmail.com"
+email = "392846+binarybana@users.noreply.github.com"
 
 [colors]
 # Highlight hunks with background
@@ -9,5 +9,4 @@ email = "binarybana@gmail.com"
 
 [ui]
 default-command = "log"
-
 diff.tool = ["delta_jj.sh", "--diff-so-fancy", "--file-transformation", 's:tmp/jj-diff.*/(left|right)::', "$left", "$right"]
