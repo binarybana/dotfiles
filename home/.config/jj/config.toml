@@ -9,4 +9,4 @@ email = "392846+binarybana@users.noreply.github.com"
 
 [ui]
 default-command = "log"
-diff.tool = ["delta_jj.sh", "--diff-so-fancy", "--file-transformation", 's:tmp/jj-diff.*/(left|right)::', "$left", "$right"]
+diff.tool = ["delta_jj.sh", "--diff-so-fancy", "--file-transformation", 's:(var/folders|tmp/jj-diff).*/(left|right)::', "$left", "$right"]
