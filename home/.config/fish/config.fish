@@ -103,7 +103,7 @@ if status is-interactive
   abbr -a pip -- echo "Use UV!"
 
   # fzf
-  if test -x (which fzf)
+  if command -q fzf
     set FZF_CTRL_R_OPTS ""
     fzf --fish | source
   end
