@@ -27,6 +27,8 @@ then
     sudo apt update
     sudo apt install -y $(cat $HOME/.homesick/repos/dotfiles/pkg-list-essential.apt)
     sudo chsh "$(id -un)" --shell "/usr/bin/fish"
+    echo 'en_US.UTF-8 UTF-8' | sudo tee -a /etc/local.gen
+    sudo locale-gen
 elif [ "$PLATFORM" == "Darwin" ];
 then
     # Install Brew
