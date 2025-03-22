@@ -22,6 +22,8 @@ mkdir -p $HOME/bin
 
 if [ "$PLATFORM" == "Linux" ];
 then
+    # To get fish 4.0
+    sudo apt-add-repository ppa:fish-shell/release-4
     sudo apt update
     sudo apt install -y $(cat $HOME/.homesick/repos/dotfiles/pkg-list-essential.apt)
     sudo chsh "$(id -un)" --shell "/usr/bin/fish"
@@ -42,34 +44,15 @@ fi
 
 sudo cp $HOME/.homesick/repos/dotfiles/gitignore_global /etc
 
-# Astral's uv (amazeballs!)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-$HOME/.local/bin/uv tool install ruff
-# uv tool install pyright
-
-# Cargo binstall
-mkdir -p $HOME/.cargo/bin
-curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-
 # INSTALL BINARIES
 pushd $HOME/bin
-
-# Workaround binstall issue for atuin https://github.com/cargo-bins/cargo-binstall/issues/1806
-# $HOME/.cargo/bin/cargo-binstall -y atuin
-bash -c "bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)"
-
-# Install diff-so-fancy
-wget https://github.com/so-fancy/diff-so-fancy/archive/refs/tags/v1.4.4.tar.gz
-tar xzf v1.4.4.tar.gz
-rm v1.4.4.tar.gz
-ln -sf diff-so-fancy-1.4.4/diff-so-fancy .
 
 # Install up to date neovim
 if [ "$PLATFORM" == "Linux" ];
 then
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-tar xzf nvim-linux64.tar.gz
-ln -s nvim-linux64/bin/nvim .
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
+tar xzf nvim-linux-x86_64.tar.gz
+ln -sf nvim-linux-x86_64/bin/nvim .
 elif [ "$PLATFORM" == "Darwin" ];
 then
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
@@ -81,8 +64,22 @@ fi
 # DONE WITH $HOME/bin
 popd
 
-# Delta (git diffing)
-$HOME/.cargo/bin/cargo-binstall -y git-delta
+# Astral's uv (amazeballs!)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+$HOME/.local/bin/uv tool install ruff
+# uv tool install pyright
+
+# Cargo binstall
+mkdir -p $HOME/.cargo/bin
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+# Atuin and Delta (git diffing)
+$HOME/.cargo/bin/cargo-binstall --no-confirm \
+    atuin \
+    git-delta \
+    jj-cli \
+    zellij \
+    fd-find
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh -s -- --yes

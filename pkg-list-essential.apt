@@ -2,10 +2,13 @@ git
 htop
 curl
 wget
-tmux
 eza
 fish
 direnv
 ripgrep
 jq
 hub
+build-essential
+clang
+cmake
+btop
