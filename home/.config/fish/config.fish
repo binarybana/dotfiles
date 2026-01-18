@@ -2,10 +2,9 @@ alias oa='eza -a --group-directories-first'
 alias o='eza --group-directories-first'
 alias oo='eza -l --group-directories-first'
 
-alias vim=nvim
-alias vi=nvim
-set -gx EDITOR nvim
+set -gx EDITOR helix
 
+set -gx COLORTERM truecolor
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 set -gx LC_CTYPE en_US.UTF-8
@@ -23,6 +22,7 @@ set -px PATH ~/.cargo/bin ~/.local/bin ~/bin /opt/homebrew/bin
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    ~/.local/bin/mise activate fish | source
     starship init fish | source
     direnv hook fish | source
     source ~/.homesick/repos/homeshick/homeshick.fish
@@ -43,7 +43,6 @@ if status is-interactive
         atuin init fish --disable-up-arrow | source
     end
 
-    ~/.local/bin/mise activate fish | source
     abbr -a pip -- echo "Use UV!"
 end
 
