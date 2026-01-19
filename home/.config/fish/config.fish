@@ -3,7 +3,7 @@ alias o='eza --group-directories-first'
 alias oo='eza -l --group-directories-first'
 
 set -gx EDITOR helix
-
+set -gx STARSHIP_LOG error
 set -gx COLORTERM truecolor
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
