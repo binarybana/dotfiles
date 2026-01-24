@@ -2,7 +2,6 @@ alias oa='eza -a --group-directories-first'
 alias o='eza --group-directories-first'
 alias oo='eza -l --group-directories-first'
 
-set -gx EDITOR helix
 set -gx STARSHIP_LOG error
 set -gx COLORTERM truecolor
 set -gx LANG en_US.UTF-8
@@ -44,6 +43,9 @@ if status is-interactive
     end
 
     abbr -a pip -- echo "Use UV!"
+
+    set -gx EDITOR (which hx)
+    set -gx SUDO_EDITOR (which hx)
 end
 
 source $HOME/.config/fish/themes/tokyonight_night.fish
